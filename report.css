@@ -1,23 +1,28 @@
 body {
   margin: 100px;
   padding: 0;
-  font: 14px/1.2 "Source Sans Pro", Helvetica, sans;
+  font: 12px/1.2 "Source Sans Pro", Helvetica, sans;
 }
 
 a {
   text-decoration: none;
+  color: #12c;
 }
 
 h1 {
   font-size: 30px;
   font-weight: 400;
-  margin: 0 0 10px;
+  margin: 0 0 20px;
 }
 
 h2 {
   font-size: 18px;
   font-weight: 400;
   margin: 40px 0 20px;
+}
+
+.time {
+  color: #aaa;
 }
 
 table {
@@ -29,6 +34,7 @@ table {
 table tr td  {
   border-bottom: 1px solid #eee;
   padding: 4px 8px;
+  word-wrap: break-word;
 }
 
 table tr td:last-child {
