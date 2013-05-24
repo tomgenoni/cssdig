@@ -40,7 +40,8 @@ html = "<h1>CSS Report for " + css_domain + "</h1>"
 html += "<p><a href='"+css_link+"'/>"+css_link+"</a></p>\n"
 
 for s in search_values:
-    result = re.findall(s + ":(.*?)[;|}]", css)
+
+    result = re.findall("(?<!-)" + s + "(.*?):(.*?)[;|}]", css)
     if not result:
         result = re.findall("!important", css)
     result.sort()
