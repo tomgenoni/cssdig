@@ -4,7 +4,11 @@ from collections import Counter
 from bs4 import BeautifulSoup
 import re, urllib2, time, datetime, operator, sys
 
-url = "http://css-tricks.com/"
+url = "https://medium.com/the-lauren-papers/a30ac0d4b1d0"
+
+domain_blacklist = [
+    'cloud.typography.com'
+]
 
 css_urls = []
 css_combined = ""
@@ -12,29 +16,31 @@ css_combined = ""
 html_doc = urllib2.urlopen(url).read()
 soup = BeautifulSoup(html_doc)
 
-url_domain = urlparse(url)
-url_domain = url_domain.netloc
-
-print url_domain
-
 # Find all <link> elements.
 for link in soup.find_all('link'):
     # Get the href attr of the <link>.
-    link_href = link.get('href')
-    # If the href ends in '.css' then we have a css file.
-    if link_href.endswith('.css'):
+    if link.get('rel')[0] ==  'stylesheet':
+        # If it's a stylesheet, get the link to the css sheet.
+        link_href = link.get('href')
         # If it starts with an absolute path, construct final css path.
         if link_href.startswith("/"):
-            link_href = url_domain + link_href
+            link_href = url + link_href
         # If it starts with an relative path, construct final css path.
         elif link_href.startswith("."):
-            link_href = url_domain + "/" + link_href
+            link_href = url + "/" + link_href
 
-        # Create list of CSS files on the page.
+        print link_href
+
+        #Create list of CSS files on the page.
         css_urls.append(link_href)
 
-        # Concatenate all CSS files into one long string.
-        css_combined += urllib2.urlopen(link_href).read()
+
+# Concatenate all CSS files into one long string, only if they are not blacklisted.
+for u in css_urls:
+    host = urlparse(u).hostname
+    if not host in domain_blacklist:
+        css_combined += urllib2.urlopen(u).read()
+
 
 ts = time.time()
 timestamp = datetime.datetime.fromtimestamp(ts).strftime('%m-%d-%Y at %H:%M:%S')
