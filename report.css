@@ -2,6 +2,7 @@ body {
   margin: 100px;
   padding: 0;
   font: 11px/1.2 "Roboto", Helvetica, sans;
+  color: #333;
 }
 
 a {
@@ -19,10 +20,6 @@ h1 {
   font-weight: 400;
   margin: 0 0 20px;
   padding: 0;
-}
-
-.time {
-  color: #aaa;
 }
 
 table {

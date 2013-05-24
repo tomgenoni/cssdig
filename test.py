@@ -50,7 +50,6 @@ for p in props:
     html += "<tr class='totals'>\n<td>"+p+"</td>" + "<td>" + str(len(values)) + "</td>\n</tr>\n"
 
     for key, value in sorted(cnt.iteritems(), key=lambda (k,v): (k,v)):
-        print key
         color_example = ""
         key = key.lstrip()
         if p == "color" or p == "background":
