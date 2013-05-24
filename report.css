@@ -49,6 +49,7 @@ table tr.totals td {
 }
 
 table.stats {
+  width: auto;
   margin-top: 0;
 }
 
@@ -59,6 +60,7 @@ table.stats td {
 table.stats td:first-child {
   width: 1px;
   text-align: right;
+  white-space: nowrap;
 }
 
 table.stats td:last-child {

@@ -28,7 +28,7 @@ build_dir = 'output'
 build_file = build_dir+'/index.html'
 layout_tmpl_html = open('template/index.tmpl').read()
 
-css_link = "http://www.gap.com/gzip_N1274944906/optimizedBundles/globalOptimized.css"
+css_link = "http://images.apple.com/global/styles/base.css"
 css = urllib2.urlopen(css_link).read()
 
 html = "<table class='stats'><tr><td><b>CSS File:</b></td><td><a href='"+css_link+"'/>"+css_link+"</a></td></tr>\n"
