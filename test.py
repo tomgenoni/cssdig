@@ -31,8 +31,8 @@ layout_tmpl_html = open('template/index.tmpl').read()
 css_link = "http://www.gap.com/gzip_N1274944906/optimizedBundles/globalOptimized.css"
 css = urllib2.urlopen(css_link).read()
 
-html = "<p><a href='"+css_link+"'/>"+css_link+"</a></p>\n"
-html += "<p class='time'>Created " + timestamp + "</p>\n"
+html = "<table class='stats'><tr><td><b>CSS File:</b></td><td><a href='"+css_link+"'/>"+css_link+"</a></td></tr>\n"
+html += "<tr><td><b>Created:</b></td><td>"+timestamp+"</td></tr></table>\n"
 
 # Find all instances of !important
 imp_values = re.findall("!important", css)
@@ -41,7 +41,7 @@ html += "<tr class='totals'>\n<td>!important</td>" + "<td>" + str(len(imp_values
 html += "</table>\n"
 
 for p in props:
-    regex = "(?<!-)"+p+".*?:(.*?)[;|}]"
+    regex = "(?<!-)"+p+"\s*:(.*?)[;|}]"
     values = re.findall(regex, css)
     values.sort()
     cnt = Counter(values)
@@ -52,7 +52,9 @@ for p in props:
     for key, value in sorted(cnt.iteritems(), key=lambda (k,v): (k,v)):
         color_example = ""
         key = key.lstrip()
-        html += "<tr>\n<td>" + p +": " + "%s;</td><td>%s</td>\n</tr>\n" % (key, value)
+        if p == "color" or p == "background":
+            color_example = "<span class='color-example' style='background:"+key+"'></span>"
+        html += "<tr>\n<td>" + color_example + p +": " + "%s;</td><td>%s</td>\n</tr>\n" % (key, value)
     html += "</table>\n"
 
 tf = open(build_file, 'w')

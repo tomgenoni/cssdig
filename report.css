@@ -1,7 +1,7 @@
 body {
   margin: 100px;
   padding: 0;
-  font: 12px/1.2 "Source Sans Pro", Helvetica, sans;
+  font: 11px/1.2 "Roboto", Helvetica, sans;
 }
 
 a {
@@ -9,16 +9,16 @@ a {
   color: #12c;
 }
 
-h1 {
-  font-size: 30px;
-  font-weight: 400;
-  margin: 0 0 20px;
+b {
+  font-weight: 500;
 }
 
-h2 {
-  font-size: 18px;
+h1 {
+  font-size: 28px;
+  line-height: 1;
   font-weight: 400;
-  margin: 40px 0 20px;
+  margin: 0 0 20px;
+  padding: 0;
 }
 
 .time {
@@ -43,9 +43,26 @@ table tr td:last-child {
 }
 
 table tr.totals td {
-  font-weight: 600;
+  font-weight: 500;
   background: #f5f5f5;
   border-bottom: 2px solid #ccc;
+}
+
+table.stats {
+  margin-top: 0;
+}
+
+table.stats td {
+  border: none;
+}
+
+table.stats td:first-child {
+  width: 1px;
+  text-align: right;
+}
+
+table.stats td:last-child {
+  text-align: left;
 }
 
 .color-example {
@@ -54,4 +71,5 @@ table tr.totals td {
   margin-right: 10px;
   width: 14px;
   height: 14px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, .2)
 }
