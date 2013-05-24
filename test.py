@@ -41,7 +41,7 @@ html += "<tr class='totals'>\n<td>!important</td>" + "<td>" + str(len(imp_values
 html += "</table>\n"
 
 for p in props:
-    regex = "(?<!-)"+p+"\s*:(.*?)[;|}]"
+    regex = "(?<!-)"+p+"\s*:\s*(.*?)[;|}]"
     values = re.findall(regex, css)
     values.sort()
     cnt = Counter(values)
@@ -50,6 +50,7 @@ for p in props:
     html += "<tr class='totals'>\n<td>"+p+"</td>" + "<td>" + str(len(values)) + "</td>\n</tr>\n"
 
     for key, value in sorted(cnt.iteritems(), key=lambda (k,v): (k,v)):
+        print key
         color_example = ""
         key = key.lstrip()
         if p == "color" or p == "background":
