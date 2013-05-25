@@ -5,7 +5,7 @@ from collections import Counter
 from bs4 import BeautifulSoup
 from cStringIO import StringIO
 
-url = "http://www.atomeye.com/"
+url = "http://www.huffingtonpost.com/"
 
 # Domains that can't be accessed by the script.
 domain_blacklist = [
@@ -40,7 +40,7 @@ for link in soup.find_all('link'):
         link_href = urlparse(link.get('href'))
 
         # Resolve the path to the CSS files.
-        full_css_path = urlunparse((link_href.scheme or orig.scheme, link_href.netloc or orig.netloc, os.path.join(os.path.dirname(orig.path), link_href.path), None, None, None))
+        full_css_path = urlunparse((link_href.scheme or orig.scheme, link_href.netloc or orig.netloc, os.path.join(os.path.dirname(orig.path), link_href.path + "?" + link_href.query), None, None, None))
 
         #Create list of CSS files on the page.
         css_urls.append(full_css_path)
