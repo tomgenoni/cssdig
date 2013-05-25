@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 from cStringIO import StringIO
 
 url = "http://www.huffingtonpost.com/"
+#url = "http://atomeye.com"
 
 # Domains that can't be accessed by the script.
 domain_blacklist = [
@@ -15,7 +16,7 @@ domain_blacklist = [
 ]
 
 # Parse the url.
-orig = urlparse(url)
+url_parsed = urlparse(url)
 
 css_urls = []
 css_combined = ""
@@ -37,10 +38,14 @@ for link in soup.find_all('link'):
     if link.get('rel')[0] ==  'stylesheet':
 
         # If it's a stylesheet, get the link to the css sheet.
-        link_href = urlparse(link.get('href'))
+        css_href_parsed = urlparse(link.get('href'))
+
+        query_string = None
+        if not css_href_parsed.query == None:
+            query_string = "?" + css_href_parsed.query
 
         # Resolve the path to the CSS files.
-        full_css_path = urlunparse((link_href.scheme or orig.scheme, link_href.netloc or orig.netloc, os.path.join(os.path.dirname(orig.path), link_href.path, "?" + link_href.query), None, None, None))
+        full_css_path = urlunparse((css_href_parsed.scheme or url_parsed.scheme, css_href_parsed.netloc or url_parsed.netloc, os.path.join(os.path.dirname(url_parsed.path), css_href_parsed.path + query_string), None, None, None))
 
         #Create list of CSS files on the page.
         css_urls.append(full_css_path)
