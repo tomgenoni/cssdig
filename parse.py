@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from cStringIO import StringIO
 import urlparse, os, re, urllib2, time, datetime, operator, sys, gzip
 
-url = "https://medium.com/the-lauren-papers/a30ac0d4b1d0"
+url = "http://www.apple.com/"
 
 # Domains that can't be accessed by the script.
 domain_blacklist = [
@@ -12,8 +12,7 @@ domain_blacklist = [
     'use.typekit.com'
 ]
 
-# Get the scheme (http or https) for later use.
-# url_scheme = urlparse.urlparse(url).scheme
+# Parse the url.
 orig = urlparse.urlparse(url)
 
 css_urls = []
@@ -41,7 +40,7 @@ for u in css_urls:
     # Concatenate all CSS files into one long string, only if they are not blacklisted.
     if not host in domain_blacklist:
         response = urllib2.urlopen(u)
-        # Check to see if URL is gziped.
+        #Check to see if URL is gziped.
         if response.info().get('Content-Encoding') == 'gzip':
             buf = StringIO( response.read())
             f = gzip.GzipFile(fileobj=buf)
@@ -68,7 +67,8 @@ props = [
     'padding-left',
     'padding-right',
     'width',
-    'height'
+    'height',
+    'z-index'
 ]
 
 build_dir = 'output'
@@ -77,6 +77,8 @@ layout_tmpl_html = open('template/index.tmpl').read()
 
 html = "<table class='stats'><tr><td><b>CSS File:</b></td><td><a href='TODO'/>TODO</a></td></tr>\n"
 html += "<tr><td><b>Created:</b></td><td>"+timestamp+"</td></tr></table>\n"
+
+css_combined = "#globalheader { z-index:1; }"
 
 # Find all instances of !important
 important_values = re.findall("!important", css_combined)

@@ -52,12 +52,12 @@ table.stats {
 
 table.stats td {
   border: none;
+  white-space: nowrap;
 }
 
 table.stats td:first-child {
   width: 1px;
   text-align: right;
-  white-space: nowrap;
 }
 
 table.stats td:last-child {
