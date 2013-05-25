@@ -4,12 +4,13 @@ from bs4 import BeautifulSoup
 from cStringIO import StringIO
 import urlparse, os, re, urllib2, time, datetime, operator, sys, gzip
 
-url = "http://www.apple.com/"
+url = "https://developer.mozilla.org/en-US/"
 
 # Domains that can't be accessed by the script.
 domain_blacklist = [
     'cloud.typography.com',
-    'use.typekit.com'
+    'use.typekit.com',
+    'fonts.googleapis.com'
 ]
 
 # Parse the url.
@@ -25,6 +26,7 @@ soup = BeautifulSoup(html_doc)
 for link in soup.find_all('link'):
     # Get the href attr of the <link>.
     if link.get('rel')[0] ==  'stylesheet':
+
         # If it's a stylesheet, get the link to the css sheet.
         link_href = urlparse.urlparse(link.get('href'))
 
@@ -44,9 +46,9 @@ for u in css_urls:
         if response.info().get('Content-Encoding') == 'gzip':
             buf = StringIO( response.read())
             f = gzip.GzipFile(fileobj=buf)
-            css_combined = f.read()
+            css_combined += f.read()
         else:
-            css_combined = response.read()
+            css_combined += response.read()
 
 ts = time.time()
 timestamp = datetime.datetime.fromtimestamp(ts).strftime('%m-%d-%Y at %H:%M:%S')
@@ -77,8 +79,6 @@ layout_tmpl_html = open('template/index.tmpl').read()
 
 html = "<table class='stats'><tr><td><b>CSS File:</b></td><td><a href='TODO'/>TODO</a></td></tr>\n"
 html += "<tr><td><b>Created:</b></td><td>"+timestamp+"</td></tr></table>\n"
-
-css_combined = "#globalheader { z-index:1; }"
 
 # Find all instances of !important
 important_values = re.findall("!important", css_combined)
