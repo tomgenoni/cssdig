@@ -1,10 +1,11 @@
+import os, re, urllib2, time, datetime, operator, sys, gzip
+from urlparse import urlparse, urljoin, urlunparse
 from collections import OrderedDict
 from collections import Counter
 from bs4 import BeautifulSoup
 from cStringIO import StringIO
-import urlparse, os, re, urllib2, time, datetime, operator, sys, gzip
 
-url = "http://www.huffingtonpost.com/"
+url = "http://www.atomeye.com/"
 
 # Domains that can't be accessed by the script.
 domain_blacklist = [
@@ -14,7 +15,7 @@ domain_blacklist = [
 ]
 
 # Parse the url.
-orig = urlparse.urlparse(url)
+orig = urlparse(url)
 
 css_urls = []
 css_combined = ""
@@ -32,20 +33,20 @@ soup = BeautifulSoup(getRemoteURL(url))
 
 # Find all <link> elements.
 for link in soup.find_all('link'):
-    # Get the href attr of the <link>.
+    # Get the rel attr of the <link>.
     if link.get('rel')[0] ==  'stylesheet':
 
         # If it's a stylesheet, get the link to the css sheet.
-        link_href = urlparse.urlparse(link.get('href'))
+        link_href = urlparse(link.get('href'))
 
         # Resolve the path to the CSS files.
-        full_css_path = urlparse.urlunparse((link_href.scheme or orig.scheme, link_href.netloc or orig.netloc, os.path.join(os.path.dirname(orig.path), link_href.path), None, None, None))
+        full_css_path = urlunparse((link_href.scheme or orig.scheme, link_href.netloc or orig.netloc, os.path.join(os.path.dirname(orig.path), link_href.path), None, None, None))
 
         #Create list of CSS files on the page.
         css_urls.append(full_css_path)
 
 for u in css_urls:
-    host = urlparse.urlparse(u).hostname
+    host = urlparse(u).hostname
     # Concatenate all CSS files into one long string if they are not blacklisted.
     if not host in domain_blacklist:
         css_combined += getRemoteURL(u)
