@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from cStringIO import StringIO
 import urlparse, os, re, urllib2, time, datetime, operator, sys, gzip
 
-url = "https://twitter.com/"
+url = "http://www.huffingtonpost.com/"
 
 # Domains that can't be accessed by the script.
 domain_blacklist = [
@@ -19,16 +19,16 @@ orig = urlparse.urlparse(url)
 css_urls = []
 css_combined = ""
 
-html_doc = urllib2.urlopen(url)
+def getRemoteURL(url):
+    doc = urllib2.urlopen(url)
+    if doc.info().get('Content-Encoding') == 'gzip':
+        buf = StringIO(doc.read())
+        f = gzip.GzipFile(fileobj=buf)
+        return f.read()
+    else:
+        return doc.read()
 
-if html_doc.info().get('Content-Encoding') == 'gzip':
-    buf = StringIO(html_doc.read())
-    f = gzip.GzipFile(fileobj=buf)
-    html_doc = f.read()
-else:
-    html_doc = html_doc.read()
-
-soup = BeautifulSoup(html_doc)
+soup = BeautifulSoup(getRemoteURL(url))
 
 # Find all <link> elements.
 for link in soup.find_all('link'):
@@ -38,7 +38,7 @@ for link in soup.find_all('link'):
         # If it's a stylesheet, get the link to the css sheet.
         link_href = urlparse.urlparse(link.get('href'))
 
-        # Resolve the path tot hte
+        # Resolve the path to the CSS files.
         full_css_path = urlparse.urlunparse((link_href.scheme or orig.scheme, link_href.netloc or orig.netloc, os.path.join(os.path.dirname(orig.path), link_href.path), None, None, None))
 
         #Create list of CSS files on the page.
@@ -46,19 +46,9 @@ for link in soup.find_all('link'):
 
 for u in css_urls:
     host = urlparse.urlparse(u).hostname
-    # Concatenate all CSS files into one long string, only if they are not blacklisted.
+    # Concatenate all CSS files into one long string if they are not blacklisted.
     if not host in domain_blacklist:
-        response = urllib2.urlopen(u)
-        #Check to see if URL is gziped.
-        if response.info().get('Content-Encoding') == 'gzip':
-            buf = StringIO( response.read())
-            f = gzip.GzipFile(fileobj=buf)
-            css_combined += f.read()
-        else:
-            css_combined += response.read()
-
-ts = time.time()
-timestamp = datetime.datetime.fromtimestamp(ts).strftime('%m-%d-%Y at %H:%M:%S')
+        css_combined += getRemoteURL(u)
 
 props = [
     'background',
@@ -84,6 +74,10 @@ build_dir = 'output'
 build_file = build_dir+'/index.html'
 layout_tmpl_html = open('template/index.tmpl').read()
 
+ts = time.time()
+timestamp = datetime.datetime.fromtimestamp(ts).strftime('%m-%d-%Y at %H:%M:%S')
+
+# Star collecting the HTML.
 html = "<table class='stats'><tr><td><b>CSS File:</b></td><td><a href='TODO'/>TODO</a></td></tr>\n"
 html += "<tr><td><b>Created:</b></td><td>"+timestamp+"</td></tr></table>\n"
 
