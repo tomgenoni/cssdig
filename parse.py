@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from cStringIO import StringIO
 import urlparse, os, re, urllib2, time, datetime, operator, sys, gzip
 
-url = "https://developer.mozilla.org/en-US/"
+url = "https://twitter.com/"
 
 # Domains that can't be accessed by the script.
 domain_blacklist = [
@@ -19,7 +19,15 @@ orig = urlparse.urlparse(url)
 css_urls = []
 css_combined = ""
 
-html_doc = urllib2.urlopen(url).read()
+html_doc = urllib2.urlopen(url)
+
+if html_doc.info().get('Content-Encoding') == 'gzip':
+    buf = StringIO(html_doc.read())
+    f = gzip.GzipFile(fileobj=buf)
+    html_doc = f.read()
+else:
+    html_doc = html_doc.read()
+
 soup = BeautifulSoup(html_doc)
 
 # Find all <link> elements.
@@ -35,7 +43,6 @@ for link in soup.find_all('link'):
 
         #Create list of CSS files on the page.
         css_urls.append(full_css_path)
-
 
 for u in css_urls:
     host = urlparse.urlparse(u).hostname
