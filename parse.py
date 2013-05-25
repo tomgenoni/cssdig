@@ -1,15 +1,20 @@
-from urlparse import urlparse
 from collections import OrderedDict
 from collections import Counter
 from bs4 import BeautifulSoup
-import re, urllib2, time, datetime, operator, sys
+from cStringIO import StringIO
+import urlparse, os, re, urllib2, time, datetime, operator, sys, gzip
 
 url = "https://medium.com/the-lauren-papers/a30ac0d4b1d0"
 
+# Domains that can't be accessed by the script.
 domain_blacklist = [
     'cloud.typography.com',
     'use.typekit.com'
 ]
+
+# Get the scheme (http or https) for later use.
+# url_scheme = urlparse.urlparse(url).scheme
+orig = urlparse.urlparse(url)
 
 css_urls = []
 css_combined = ""
@@ -22,26 +27,27 @@ for link in soup.find_all('link'):
     # Get the href attr of the <link>.
     if link.get('rel')[0] ==  'stylesheet':
         # If it's a stylesheet, get the link to the css sheet.
-        link_href = link.get('href')
-        # If it starts with an absolute path, construct final css path.
-        if link_href.startswith("/"):
-            link_href = url + link_href
-        # If it starts with an relative path, construct final css path.
-        elif link_href.startswith("."):
-            link_href = url + "/" + link_href
+        link_href = urlparse.urlparse(link.get('href'))
 
-        print link_href
+        # Resolve the path tot hte
+        full_css_path = urlparse.urlunparse((link_href.scheme or orig.scheme, link_href.netloc or orig.netloc, os.path.join(os.path.dirname(orig.path), link_href.path), None, None, None))
 
         #Create list of CSS files on the page.
-        css_urls.append(link_href)
+        css_urls.append(full_css_path)
 
 
-# Concatenate all CSS files into one long string, only if they are not blacklisted.
 for u in css_urls:
-    host = urlparse(u).hostname
+    host = urlparse.urlparse(u).hostname
+    # Concatenate all CSS files into one long string, only if they are not blacklisted.
     if not host in domain_blacklist:
-        css_combined += urllib2.urlopen(u).read()
-
+        response = urllib2.urlopen(u)
+        # Check to see if URL is gziped.
+        if response.info().get('Content-Encoding') == 'gzip':
+            buf = StringIO( response.read())
+            f = gzip.GzipFile(fileobj=buf)
+            css_combined = f.read()
+        else:
+            css_combined = response.read()
 
 ts = time.time()
 timestamp = datetime.datetime.fromtimestamp(ts).strftime('%m-%d-%Y at %H:%M:%S')
@@ -73,9 +79,9 @@ html = "<table class='stats'><tr><td><b>CSS File:</b></td><td><a href='TODO'/>TO
 html += "<tr><td><b>Created:</b></td><td>"+timestamp+"</td></tr></table>\n"
 
 # Find all instances of !important
-imp_values = re.findall("!important", css_combined)
+important_values = re.findall("!important", css_combined)
 html += "<table>\n"
-html += "<tr class='totals'>\n<td>!important</td>" + "<td>" + str(len(imp_values)) + "</td>\n</tr>\n"
+html += "<tr class='totals'>\n<td>!important</td>" + "<td>" + str(len(important_values)) + "</td>\n</tr>\n"
 html += "</table>\n"
 
 for p in props:

@@ -1,9 +1,12 @@
-from urlparse import urlparse
-from collections import OrderedDict
-from collections import Counter
-from bs4 import BeautifulSoup
-import re, urllib2, time, datetime, operator, sys
+import urllib2
+import gzip
+from cStringIO import StringIO
 
-url = "https://medium.com/the-lauren-papers/a30ac0d4b1d0"
+url = "https://dnqgz544uhbo8.cloudfront.net/_/fp/css/main-base.3oVpaIFFn_9laeEJwwsA2Q.css"
 
-print urllib2.urlopen(url).read()
+
+response = urllib2.urlopen(url)
+if response.info().get('Content-Encoding') == 'gzip':
+    buf = StringIO( response.read())
+    f = gzip.GzipFile(fileobj=buf)
+    print f.read()
