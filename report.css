@@ -1,5 +1,5 @@
 body {
-  margin: 100px;
+  margin: 70px 100px;
   padding: 0;
   font: 11px/1.2 Helvetica, sans;
   color: #333;
@@ -8,7 +8,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #12c;
+  color: #08c;
 }
 
 b {
@@ -29,11 +29,9 @@ ul li {
 }
 
 h1 {
-  font-size: 28px;
+  font-size: 20px;
   line-height: 1;
-  font-weight: 300;
-  margin: 0 0 20px;
-  padding: 0;
+  font-weight: 400;
 }
 
 .table-wrap {
@@ -79,6 +77,7 @@ table.stats td {
 }
 
 table.stats td:first-child {
+  color: #666;
   width: 1px;
   text-align: right;
 }

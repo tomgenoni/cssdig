@@ -5,7 +5,7 @@ from collections import Counter
 from bs4 import BeautifulSoup
 from cStringIO import StringIO
 
-url = "http://www.huffingtonpost.com/"
+url = "http://www.apple.com/"
 #url = "http://atomeye.com"
 
 # Domains that can't or shouldn't be included.
@@ -121,12 +121,12 @@ for p in properties:
     html += "</div>\n"
 
 for u in css_urls_clean:
-    css_urls_list += "<li>" + u + "</li>"
+    css_urls_list += "<li><a href='"+u+"'>" + u + "</a></li>"
 
 # Start collecting the HTML.
 header = "<table class='stats'>\n"
-header += "<tr><td>Target URL</td><td><a href='TODO'/>"+url+"</a></td></tr>\n"
-header += "<tr><td>CSS Files</td><td><ul>" + css_urls_list + "</ul></td></tr>\n"
+header += "<tr><td>URL</td><td><a href='TODO'/>"+url+"</a></td></tr>\n"
+header += "<tr><td>CSS</td><td><ul>" + css_urls_list + "</ul></td></tr>\n"
 header += "<tr><td>Created</td><td>"+timestamp+"</td></tr>\n"
 header += "</table>\n"
 
