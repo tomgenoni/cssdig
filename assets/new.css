@@ -20,6 +20,7 @@ nav {
   box-sizing: border-box;
   background: #eceef1;
   padding: 60px 20px 20px;
+  border-right: 1px solid #eee;
 }
 
 ul {
@@ -38,7 +39,7 @@ h1 {
 }
 
 h2 {
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1;
   font-weight: 400;
   margin: 0 0 10px;
@@ -69,8 +70,9 @@ form {
   border: 1px solid #ddd;
   padding: 4px;
   box-sizing: border-box;
-  border-radius: 2px;
+  border-radius: 3px;
   margin-bottom: 10px;
+  font-family: Helvetica, sans;
 }
 
 
