@@ -44,7 +44,7 @@
         $url = $_GET['url'];
         $properties = $_GET['p'];
         $properties_separated = implode(",", $properties);
-        $cmd = 'python build.py '.$url.' '.$comma_separated;
+        $cmd = 'python build.py '.$url.' '.$properties_separated;
         $results = shell_exec($cmd);
         echo $results;     
     ?>

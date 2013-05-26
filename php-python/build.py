@@ -5,6 +5,10 @@ from collections import Counter
 from bs4 import BeautifulSoup
 from cStringIO import StringIO
 
+# Get URL and properties from PHP
+url = sys.argv[1]
+properties = sys.argv[2].split(",")
+
 # Domains that can't or shouldn't be included.
 domain_blacklist = [
     'cloud.typography.com',
@@ -12,32 +16,9 @@ domain_blacklist = [
     'fonts.googleapis.com'
 ]
 
-# Properties to be tested.
-properties = [
-    'background',
-    'border',
-    'color',
-    'font',
-    'font-size',
-    'font-family',
-    'font-weight',
-    'line-height',
-    'margin',
-    'margin-left',
-    'margin-right',
-    'padding',
-    'padding-left',
-    'padding-right',
-    'width',
-    'height',
-    'z-index'
-]
-
 # Get timestamp.
 ts = time.time()
 timestamp = datetime.datetime.fromtimestamp(ts).strftime('%m-%d-%Y at %H:%M:%S')
-
-url = sys.argv[1]
 
 # Parse the url.
 url_parsed = urlparse(url)
