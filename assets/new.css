@@ -16,11 +16,10 @@ nav {
   top: 0;
   left: 0;
   bottom: 0;
-  width: 200px;
+  width: 220px;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
-  background: #eceef1;
-  padding: 60px 20px 20px;
-  border-right: 1px solid #eee;
+  padding: 60px 0 20px 20px;
 }
 
 ul {
@@ -31,11 +30,13 @@ ul {
 
 
 h1 {
-  font-size: 20px;
+  font-size: 30px;
+  letter-spacing: -1px;
   line-height: 1;
-  font-weight: 400;
+  font-weight: 300;
   margin: 0 0 10px;
   padding: 0;
+
 }
 
 h2 {
@@ -48,11 +49,11 @@ h2 {
 
 .desc {
   font: 10px/15px Georgia, Times, sans;
-  font-style: italic;
+  color: #999;
 }
 
 form {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .inputs {
@@ -61,6 +62,17 @@ form {
 
 .props {
   margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.col-left {
+  width: 48%;
+  float: left;
+}
+
+.col-right {
+  width: 48%;
+  float: right;
 }
 
 #url {
@@ -69,9 +81,11 @@ form {
   background: #fff;
   border: 1px solid #ddd;
   padding: 4px;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   border-radius: 3px;
   margin-bottom: 10px;
+  margin-top: 2px;
   font-family: Helvetica, sans;
 }
 
@@ -81,7 +95,7 @@ form {
 .content {
   margin-top: 60px;
   margin-right: 40px;
-  margin-left: 240px;
+  margin-left: 260px;
 }
 
 table {
