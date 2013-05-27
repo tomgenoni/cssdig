@@ -7,9 +7,10 @@
 </head>
 
     <nav>
-        <h1>CSS Dig</h1>
+
+        <h1><a href="."><span class="logo"></span>CSS Dig</a></h1>
         <p class="desc">
-            Unearthing the properties and values of your CSS values to help refactor and standardize. That or just stare in horror.
+            Unearthing the properties and values of your CSS to help refactor, standardize and maintain. That or just stare in horror.
         </p>
         <ul class="links">
             <li><a href="#">About</a></li>
