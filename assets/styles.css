@@ -11,6 +11,21 @@ a {
   color: #08c;
 }
 
+.error {
+  background: #eab7b7;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #a12020;
+}
+.error:before {
+  content:"Error: ";
+  font-weight: bold;
+}
+
 nav {
   position: fixed;
   top: 0;
@@ -34,6 +49,7 @@ ul {
   margin-right: 5px;
   border-right: 1px solid #ddd;
 }
+
 .links li:last-child {
   padding-right: 0;
   margin-right: 0;

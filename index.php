@@ -152,6 +152,7 @@
     <div class="content">
     <?php
 
+
         $url = $_GET['url'];
         $properties = $_GET['p'];
 
@@ -160,12 +161,19 @@
             $url_parsed = parse_url($url);
 
             if ($url_parsed['scheme'] == 'http' || $url_parsed['scheme'] == 'https'){
-                $properties_separated = implode(",", $properties);
-                $cmd = 'python build.py '.$url.' '.$properties_separated;
-                $results = shell_exec($cmd);
-                echo $results;
+
+                $handle = @fopen($url,'r');
+                if ($handle !== false){
+                    $properties_separated = implode(",", $properties);
+                    $cmd = 'python build.py '.$url.' '.$properties_separated;
+                    $results = shell_exec($cmd);
+                    echo $results;
+                }
+                else{
+                   echo "<div class='error'><b>" . $url . "</b> doesn't appear to be a valid, working website. Please try again.</div>";
+                }
             } else {
-                echo "The URL must be in the form of http://domain.com or https://domain.com.";
+                echo "<div class='error'>The URL must be in the form of http://domain.com or https://domain.com, with or without 'www'.</div>";
             }
         }
 
