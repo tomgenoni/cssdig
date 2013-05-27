@@ -16,7 +16,7 @@
             <li><a href="https://github.com/tomgenoni/css-dig">GitHub</a></li>
         </ul>
         <form action="" method="get">
-            <label>Enter a URL</label>
+            <label>URL</label>
             <input type="text" id="url" name="url" placeholder="http://apple.com" />
             <div class="props">
                 <div class="col-left">
@@ -145,7 +145,7 @@
 
                 </div>
             </div>
-            <button class="button">Peek</button>
+            <button class="button">Dig</button>
         </form>
     </nav>
 
