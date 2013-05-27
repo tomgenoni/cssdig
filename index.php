@@ -5,7 +5,7 @@
     <title>CSS Dig</title>
     <link href='assets/styles.css' rel='stylesheet' type='text/css'>
 </head>
-
+<body>
     <nav>
 
         <h1><a href=".">CSS Dig</a></h1>
