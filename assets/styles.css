@@ -213,8 +213,8 @@ form {
 
 .stats table ul {
   display: -webkit-box;
-  display: -moz-box;
-  display: box;
+  display: -moz-flex;
+  display: flex;
   -webkit-box-orient: vertical;
   -moz-box-orient: vertical;
   -ms-box-orient: vertical;
