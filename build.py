@@ -1,4 +1,4 @@
-import os, re, urllib2, time, datetime, operator, sys, gzip
+import os, re, urllib2, time, datetime, operator, sys, gzip, tinyurl
 from urlparse import urlparse, urljoin, urlunparse
 from collections import OrderedDict
 from collections import Counter
@@ -108,6 +108,7 @@ header += "<table>\n"
 header += "<tr><td>URL</td><td><a href='TODO'/>"+url+"</a></td></tr>\n"
 header += "<tr><td>CSS</td><td><ul>" + css_urls_list + "</ul></td></tr>\n"
 header += "<tr><td>Created</td><td>"+timestamp+"</td></tr>\n"
+header += "<tr><td>Report link</td><td><a href='TODO'/>"+tinyurl.create_one(url)+"</a></td></tr>\n"
 header += "</table>\n"
 header += "</div>\n"
 

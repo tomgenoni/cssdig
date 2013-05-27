@@ -151,9 +151,8 @@ table tr.totals td {
 }
 
 .stats {
-  border-top: 2px solid #eee;
   border-bottom: 2px solid #eee;
-  padding: 10px 0;
+  padding: 0 0 10px;
 }
 
 .stats table {

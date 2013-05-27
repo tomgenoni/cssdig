@@ -9,7 +9,7 @@
     <nav>
         <h1>CSS Dig</h1>
         <p class="desc">
-            CSS Dig unearths the properties and values of your CSS values to help refactor and standardize. That or just stare in horror.
+            Unearthing the properties and values of your CSS values to help refactor and standardize. That or just stare in horror.
         </p>
         <ul class="links">
             <li><a href="#">About</a></li>
