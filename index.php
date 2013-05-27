@@ -152,7 +152,6 @@
     <div class="content">
     <?php
 
-
         $url = $_GET['url'];
         $properties = $_GET['p'];
 
