@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font: 11px/1.2 Helvetica, sans;
+  font: 11px/1.5 Helvetica, sans;
   color: #333;
   background: #fff;
 }
@@ -28,6 +28,17 @@ ul {
   margin: 0;
 }
 
+.links li {
+  display: inline-block;
+  padding-right: 6px;
+  margin-right: 5px;
+  border-right: 1px solid #ddd;
+}
+.links li:last-child {
+  padding-right: 0;
+  margin-right: 0;
+  border-right: none;
+}
 
 h1 {
   font-size: 30px;
@@ -48,8 +59,7 @@ h2 {
 }
 
 .desc {
-  font: 10px/15px Georgia, Times, sans;
-  color: #999;
+  color: #666;
 }
 
 form {

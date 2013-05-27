@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>CSS Report</title>
-    <link href='../assets/new.css' rel='stylesheet' type='text/css'>
+    <link href='assets/styles.css' rel='stylesheet' type='text/css'>
 </head>
 
     <nav>
@@ -11,9 +11,10 @@
         <p class="desc">
             CSS Dig groups CSS properties and values to help you refactor and standardize. That or just stare in horror.
         </p>
-        <p>
-            <a href="#">About</a> | <a href="#">GitHub</a>
-        </p>
+        <ul class="links">
+            <li><a href="#">About</a></li>
+            <li><a href="https://github.com/tomgenoni/css-dig">GitHub</a></li>
+        </ul>
         <form action="" method="get">
             <label>Enter a URL</label>
             <input type="text" id="url" name="url" placeholder="http://apple.com" />
@@ -155,11 +156,17 @@
         $properties = $_GET['p'];
 
         if (isset($url) && isset($properties)) {
-            $properties = $_GET['p'];
-            $properties_separated = implode(",", $properties);
-            $cmd = 'python build.py '.$url.' '.$properties_separated;
-            $results = shell_exec($cmd);
-            echo $results;
+
+            $url_parsed = parse_url($url);
+
+            if ($url_parsed['scheme'] == 'http' || $url_parsed['scheme'] == 'https'){
+                $properties_separated = implode(",", $properties);
+                $cmd = 'python build.py '.$url.' '.$properties_separated;
+                $results = shell_exec($cmd);
+                echo $results;
+            } else {
+                echo "The URL must be in the form of http://domain.com or https://domain.com.";
+            }
         }
 
     ?>
