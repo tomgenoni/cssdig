@@ -46,8 +46,8 @@ ul {
 
 .links li {
   display: inline-block;
-  padding-right: 6px;
-  margin-right: 5px;
+  padding-right: 8px;
+  margin-right: 6px;
   border-right: 1px solid #ddd;
 }
 
@@ -122,7 +122,7 @@ form {
 .content {
   margin-top: 60px;
   margin-right: 40px;
-  margin-left: 290px;
+  margin-left: 310px;
 }
 
 table {

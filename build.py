@@ -9,9 +9,13 @@ from cStringIO import StringIO
 url = sys.argv[1]
 properties = sys.argv[2].split(",")
 
+# Uncomment to debug
+# url = "https://www.inkling.com/"
+# properties = ['background']
+
 # Domains that can't or shouldn't be included.
 domain_blacklist = [
-    'cloud.typography.com',
+    'ssl.typography.com',
     'use.typekit.com',
     'fonts.googleapis.com'
 ]
