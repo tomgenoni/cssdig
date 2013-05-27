@@ -16,7 +16,7 @@ nav {
   top: 0;
   left: 0;
   bottom: 0;
-  width: 220px;
+  width: 250px;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 60px 0 20px 20px;
@@ -95,7 +95,7 @@ form {
 .content {
   margin-top: 60px;
   margin-right: 40px;
-  margin-left: 260px;
+  margin-left: 290px;
 }
 
 table {
