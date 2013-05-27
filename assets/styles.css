@@ -36,14 +36,16 @@ nav {
   box-sizing: border-box;
   padding: 50px 20px 20px 20px;
   background: #f9f9f9;
+  border-right: 1px dashed #eee;
+  min-height: 600px;
 }
 
 .logo {
   display: inline-block;
   background: #f9f9f9 url(icon.svg) no-repeat;
   background-size: 100% auto;
-  height: 40px;
-  width: 40px;
+  height: 32px;
+  width: 32px;
   vertical-align: bottom;
   margin-right: 7px;
 }
@@ -52,6 +54,12 @@ ul {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.links {
+  position: absolute;
+  bottom: 20px;
+  line-height: 1;
 }
 
 .links li {
@@ -69,14 +77,17 @@ ul {
 
 h1 {
   font-size: 30px;
-  letter-spacing: -1px;
-  line-height: 1.2;
+  line-height: 1;
   font-weight: 600;
   margin: 0 0 10px;
+  letter-spacing: -1px;
 }
 
 h1 a {
   color: inherit;
+}
+h1 span {
+  color: #999;
 }
 
 h2 {
@@ -91,8 +102,10 @@ h2 {
   color: #666;
 }
 
+/* Form */
+
 form {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .inputs {
@@ -137,30 +150,33 @@ form {
   margin-left: 310px;
 }
 
-table {
+.table-wrap table {
   width: 100%;
   border-collapse: collapse;
   margin: 40px 0;
 }
 
-table tr td  {
+.table-wrap table tr td  {
   border-top: 1px solid #f5f5f5;
   padding: 4px 4px;
   word-wrap: break-word;
   vertical-align: top;
 }
-table tr:first-child td  {
+.table-wrap table tr:first-child td  {
   border-top: none;
+  font-size: 13px;
 }
 
-table tr td:last-child {
+.table-wrap table tr td:last-child {
   width: 1px;
   text-align: right;
 }
 
-table tr.totals td {
+.table-wrap table tr.totals td {
   font-weight: 700;
 }
+
+/* Header Stats */
 
 .stats {
   border-bottom: 2px solid #eee;
@@ -176,17 +192,25 @@ table tr.totals td {
   border: none;
   white-space: nowrap;
   padding: 2px 0;
+  vertical-align: top;
 }
 
 .stats table td:first-child {
   width: 1px;
   text-align: right;
   padding-right: 5px;
+  font-weight: 600;
 }
 
 .stats table td:last-child {
   text-align: left;
 }
+
+.stats table tr:first-child td  {
+  font-size: 11px;
+}
+
+/* Inline color boxes */
 
 .color-example {
   float: left;

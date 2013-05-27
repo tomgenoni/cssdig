@@ -2,22 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CSS Report</title>
+    <title>CSS Dig</title>
     <link href='assets/styles.css' rel='stylesheet' type='text/css'>
 </head>
 
     <nav>
 
-        <h1><a href="."><span class="logo"></span>CSS Dig</a></h1>
+        <h1><a href=".">CSS Dig</a></h1>
         <p class="desc">
             Unearthing the properties and values of your CSS to help refactor, standardize and maintain. That or just stare in horror.
         </p>
-        <ul class="links">
-            <li><a href="#">About</a></li>
-            <li><a href="https://github.com/tomgenoni/css-dig">GitHub</a></li>
-        </ul>
         <form action="" method="get">
-            <label>Website URL</label>
             <input type="text" id="url" name="url" placeholder="http://apple.com" />
             <div class="props">
                 <div class="col-left">
@@ -148,6 +143,13 @@
             </div>
             <button class="button">Dig</button>
         </form>
+
+        <ul class="links">
+            <li><a href="#">About</a></li>
+            <li><a href="https://github.com/tomgenoni/css-dig">GitHub</a></li>
+            <li><a href="https://twitter.com/tomgenoni">@tomgenoni</a></li>
+        </ul>
+
     </nav>
 
     <div class="content">
