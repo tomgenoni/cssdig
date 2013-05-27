@@ -17,7 +17,8 @@ properties = sys.argv[2].split(",")
 domain_blacklist = [
     'ssl.typography.com',
     'use.typekit.com',
-    'fonts.googleapis.com'
+    'fonts.googleapis.com',
+    'cloud.webtype.com'
 ]
 
 # Get timestamp.
