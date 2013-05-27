@@ -163,12 +163,14 @@ table tr.totals td {
 .stats table td {
   border: none;
   white-space: nowrap;
+  padding: 2px 0;
 }
 
 .stats table td:first-child {
   color: #666;
   width: 1px;
   text-align: right;
+  padding-right: 5px;
 }
 
 .stats table td:last-child {

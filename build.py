@@ -23,7 +23,7 @@ domain_blacklist = [
 
 # Get timestamp.
 ts = time.time()
-timestamp = datetime.datetime.fromtimestamp(ts).strftime('%m-%d-%Y at %H:%M:%S')
+timestamp = datetime.datetime.fromtimestamp(ts).strftime('%B %d, %Y at %H:%M:%S')
 
 # Parse the url.
 url_parsed = urlparse(url)
@@ -102,13 +102,20 @@ for p in properties:
 for u in css_urls_clean:
     css_urls_list += "<li><a href='"+u+"'>" + u + "</a></li>"
 
+report_url = "http://cssdig.com/?url=" + url
+for p in properties:
+    report_url += "&p[]=" + p
+
+# report_url = urllib2.quote(report_url.encode("utf8"))
+report_tinyurl = tinyurl.create_one(report_url)
+
 # Start collecting the HTML.
 header = "<div class='stats'>\n"
 header += "<table>\n"
-header += "<tr><td>URL</td><td><a href='TODO'/>"+url+"</a></td></tr>\n"
-header += "<tr><td>CSS</td><td><ul>" + css_urls_list + "</ul></td></tr>\n"
-header += "<tr><td>Created</td><td>"+timestamp+"</td></tr>\n"
-header += "<tr><td>Report link</td><td><a href='TODO'/>"+tinyurl.create_one(url)+"</a></td></tr>\n"
+header += "<tr><td>URL Dug</td><td><a href='"+url+"'/>"+url+"</a></td></tr>\n"
+header += "<tr><td>CSS Dug</td><td><ul>" + css_urls_list + "</ul></td></tr>\n"
+header += "<tr><td>This Dig</td><td><a href='"+report_tinyurl+"'/>"+report_tinyurl+"</a></td></tr>\n"
+header += "<tr><td>Dug</td><td>"+timestamp+"</td></tr>\n"
 header += "</table>\n"
 header += "</div>\n"
 
