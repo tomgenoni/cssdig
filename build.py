@@ -51,7 +51,8 @@ soup = BeautifulSoup(getRemoteURL(url))
 # Find all <link> elements.
 for link in soup.find_all('link'):
     # Get the rel attr of the <link>.
-    if link.get('rel')[0] ==  'stylesheet':
+    rel = link.get('rel')[0]
+    if rel.lower() == 'stylesheet':
 
         # If it's a stylesheet, get the link to the css sheet.
         css_href_parsed = urlparse(link.get('href'))
