@@ -12,7 +12,7 @@ url = sys.argv[1]
 properties = sys.argv[2].split(",")
 
 # Uncomment to debug
-# url = "https://www.inkling.com/"
+# url = "http://en.wikipedia.org/wiki/Main_Page/"
 # properties = ['background']
 
 # Domains that can't or shouldn't be included.
@@ -37,7 +37,8 @@ css_urls_list_good = ""
 css_urls_list_bad = ""
 
 def getRemoteURL(url):
-    doc = urllib2.urlopen(url)
+    req = urllib2.Request(url, headers={'User-Agent' : "Magic Browser"})
+    doc = urllib2.urlopen(req)
     if doc.info().get('Content-Encoding') == 'gzip':
         buf = StringIO(doc.read())
         f = gzip.GzipFile(fileobj=buf)

@@ -4,9 +4,9 @@ contents = "empty"
 bad_files = []
 good_files = []
 
-url = "https://developer.mozilla.org/"
+url = "http://thewirecutter.com/"
 
-req = urllib2.Request(url)
+req = urllib2.Request(url, headers={'User-Agent' : "Magic Browser"})
 try:
     resp = urllib2.urlopen(req)
     good_files.append(url)
