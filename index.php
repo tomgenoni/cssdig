@@ -13,7 +13,7 @@
             Unearthing the properties and values of your CSS to help refactor, standardize and maintain. That or just stare in horror.
         </p>
         <form action="" method="get">
-            <input type="text" id="url" name="url" placeholder="http://apple.com" />
+            <input type="text" id="url" name="url" placeholder="Enter URL" />
             <div class="props">
                 <div class="col-left">
                     <div>
