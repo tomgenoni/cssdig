@@ -5,6 +5,8 @@ from collections import Counter
 from bs4 import BeautifulSoup
 from cStringIO import StringIO
 
+start_time = time.time()
+
 # Get URL and properties from PHP
 url = sys.argv[1]
 properties = sys.argv[2].split(",")
@@ -123,15 +125,19 @@ if css_urls_bad:
 # report_url = urllib2.quote(report_url.encode("utf8"))
 report_tinyurl = tinyurl.create_one(report_url)
 
+# Time elapsed
+time_elapsed = time.time() - start_time
+time_elapsed = str(round(time_elapsed,1))
+
 # Start collecting the HTML.
 header = "<div class='stats'>\n"
 header += "<table>\n"
 header += "<tr><td>URL Dug</td><td><a href='"+url+"'/>"+url+"</a></td></tr>\n"
 header += "<tr><td>CSS Dug</td><td><ul>" + css_urls_list_good + "</ul></td></tr>\n"
 if css_urls_bad:
-    header += "<tr><td>Unparsed</td><td><ul class='unparsed'>" + css_urls_list_bad + "</ul></td></tr>\n"
+    header += "<tr><td>Skipped</td><td><ul class='unparsed'>" + css_urls_list_bad + "</ul></td></tr>\n"
 header += "<tr><td>This Dig</td><td><a href='"+report_tinyurl+"'/>"+report_tinyurl+"</a></td></tr>\n"
-header += "<tr><td>Dug</td><td>"+timestamp+"</td></tr>\n"
+header += "<tr><td>Dug</td><td>"+timestamp+" taking "+time_elapsed+" seconds</td></tr>\n"
 header += "</table>\n"
 header += "</div>\n"
 
