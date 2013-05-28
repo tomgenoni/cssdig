@@ -228,6 +228,10 @@ form {
   min-width: 0;
 }
 
+.unparsed li a {
+  color: #a12020;
+}
+
 
 /* Inline color boxes */
 

@@ -15,7 +15,6 @@ properties = sys.argv[2].split(",")
 
 # Domains that can't or shouldn't be included.
 domain_blacklist = [
-    'ssl.typography.com',
     'use.typekit.com',
     'fonts.googleapis.com',
     'cloud.webtype.com'
@@ -30,8 +29,10 @@ url_parsed = urlparse(url)
 
 css_urls_all = []
 css_urls_clean = []
+css_urls_bad = []
 css_combined = ""
-css_urls_list = ""
+css_urls_list_good = ""
+css_urls_list_bad = ""
 
 def getRemoteURL(url):
     doc = urllib2.urlopen(url)
@@ -68,8 +69,17 @@ for u in css_urls_all:
     host = urlparse(u).hostname
     # Concatenate all CSS files into one long string if they are not blacklisted.
     if not host in domain_blacklist:
-        css_combined += getRemoteURL(u)
-        css_urls_clean.append(u)
+        try:
+            doc = urllib2.urlopen(u)
+            if doc.info().get('Content-Encoding') == 'gzip':
+                buf = StringIO(doc.read())
+                f = gzip.GzipFile(fileobj=buf)
+                css_combined += f.read()
+            else:
+                css_combined += doc.read()
+            css_urls_clean.append(u)
+        except urllib2.HTTPError, e:
+            css_urls_bad.append(u)
 
 # Find all instances of !important.
 important_values = re.findall("!important", css_combined)
@@ -100,11 +110,15 @@ for p in properties:
     html += "</div>\n"
 
 for u in css_urls_clean:
-    css_urls_list += "<li><a href='"+u+"'>" + u + "</a></li>"
+    css_urls_list_good += "<li><a href='"+u+"'>" + u + "</a></li>"
 
 report_url = "http://cssdig.com/?url=" + url
 for p in properties:
     report_url += "&p[]=" + p
+
+if css_urls_bad:
+    for b in css_urls_bad:
+        css_urls_list_bad += "<li><a href='"+b+"'>" + b + "</a></li>"
 
 # report_url = urllib2.quote(report_url.encode("utf8"))
 report_tinyurl = tinyurl.create_one(report_url)
@@ -113,7 +127,9 @@ report_tinyurl = tinyurl.create_one(report_url)
 header = "<div class='stats'>\n"
 header += "<table>\n"
 header += "<tr><td>URL Dug</td><td><a href='"+url+"'/>"+url+"</a></td></tr>\n"
-header += "<tr><td>CSS Dug</td><td><ul>" + css_urls_list + "</ul></td></tr>\n"
+header += "<tr><td>CSS Dug</td><td><ul>" + css_urls_list_good + "</ul></td></tr>\n"
+if css_urls_bad:
+    header += "<tr><td>Unparsed</td><td><ul class='unparsed'>" + css_urls_list_bad + "</ul></td></tr>\n"
 header += "<tr><td>This Dig</td><td><a href='"+report_tinyurl+"'/>"+report_tinyurl+"</a></td></tr>\n"
 header += "<tr><td>Dug</td><td>"+timestamp+"</td></tr>\n"
 header += "</table>\n"
