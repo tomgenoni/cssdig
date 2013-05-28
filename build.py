@@ -73,7 +73,8 @@ for u in css_urls_all:
     # Concatenate all CSS files into one long string if they are not blacklisted.
     if not host in domain_blacklist:
         try:
-            doc = urllib2.urlopen(u)
+            req = urllib2.Request(u, headers={'User-Agent' : "Magic Browser"})
+            doc = urllib2.urlopen(req)
             if doc.info().get('Content-Encoding') == 'gzip':
                 buf = StringIO(doc.read())
                 f = gzip.GzipFile(fileobj=buf)
