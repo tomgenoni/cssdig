@@ -138,6 +138,10 @@
                         <input type="checkbox" name="p[]" value="zoom" id="prop-zoom" checked="checked">
                         <label for="prop-zoom">zoom</label>
                     </div>
+                    <div>
+                        <input type="checkbox" name="p[]" value="z-index" id="prop-z-index" checked="checked">
+                        <label for="prop-z-index">z-index</label>
+                    </div>
 
                 </div>
             </div>
