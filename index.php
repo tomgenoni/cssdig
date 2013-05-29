@@ -13,7 +13,7 @@
             Inspired by Nicolle Sullivan’s tip to “grep your styles”, CSS Dig unearths the properties and values of your CSS to help you refactor, standardize and maintain.
         </p>
         <form action="" method="get">
-            <input type="text" id="url" name="url" placeholder="Enter URL" />
+            <input type="text" id="url" name="url" placeholder="Enter URL" value="atomeye.com"/>
             <div class="props">
                 <div class="col-left">
                     <div>
@@ -138,6 +138,9 @@
 
         $url = $_GET['url'];
         $properties = $_GET['p'];
+        $extra_properties = $_GET['xp'];
+
+        $extra_properties = "'".$extra_properties."'";
 
         if (isset($url) && isset($properties)) {
 
@@ -153,8 +156,8 @@
 
                 $handle = @fopen($url,'r');
                 if ($handle !== false){
-                    $properties_separated = implode(",", $properties);
-                    $cmd = 'python build.py '.$url.' '.$properties_separated;
+                    $properties = implode(",", $properties);
+                    $cmd = 'python build.py '.$url.' '.$properties.' '.$extra_properties;
                     $results = shell_exec($cmd);
                     echo $results;
                 }

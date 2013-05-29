@@ -10,6 +10,12 @@ start_time = time.time()
 # Get URL and properties from PHP
 url = sys.argv[1]
 properties = sys.argv[2].split(",")
+extra_properties = sys.argv[3]
+
+if extra_properties:
+    extra_properties = extra_properties.split(",")
+    properties = properties + extra_properties
+    properties.sort()
 
 # Uncomment to debug
 # url = "http://en.wikipedia.org/wiki/Main_Page/"
