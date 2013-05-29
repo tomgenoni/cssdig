@@ -37,20 +37,20 @@
                         <label for="prop-font">font</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="font-size" id="prop-font-size" checked="checked">
-                        <label for="prop-font-size">font-size</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="p[]" value="font-weight" id="prop-font-weight" checked="checked">
-                        <label for="prop-font-weight">font-weight</label>
-                    </div>
-                    <div>
                         <input type="checkbox" name="p[]" value="font-family" id="prop-font-family" checked="checked">
                         <label for="prop-font-family">font-family</label>
                     </div>
                     <div>
+                        <input type="checkbox" name="p[]" value="font-size" id="prop-font-size" checked="checked">
+                        <label for="prop-font-size">font-size</label>
+                    </div>
+                    <div>
                         <input type="checkbox" name="p[]" value="font-style" id="prop-font-style" checked="checked">
                         <label for="prop-font-style">font-style</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="p[]" value="font-weight" id="prop-font-weight" checked="checked">
+                        <label for="prop-font-weight">font-weight</label>
                     </div>
                     <div>
                         <input type="checkbox" name="p[]" value="height" id="prop-height" checked="checked">
@@ -122,7 +122,7 @@
                 </div>
             </div>
             <textarea name="xp" id="xp" placeholder="Enter any additional, comma-separated properties you want to search for."></textarea>
-            <button class="button">Start Digging</button>
+            <button class="button">Dig</button>
         </form>
 
         <ul class="links">
