@@ -1,0 +1,51 @@
+<div class="about">
+
+    <h2>What is CSS Dig?</h2>
+
+    <p>
+        Inspired by <a href="http://www.stubbornella.org/content/">Nicolle Sullivan’s</a> advice to “grep your styles”, CSS Dig unearths CSS properties and values from almost any website to help refactor, standardize and maintain.
+    </p>
+
+    <p>
+        To start digging, enter the URL of any website and select or enter any additional properties you want to search. Here are a few example CSS Digs:
+    </p>
+
+    <ul>
+        <li><a href="http://cssdig.com/?url=apple.com&p%5B%5D=background&p%5B%5D=color&p%5B%5D=font&p%5B%5D=font-family&p%5B%5D=font-size&p%5B%5D=font-style&p%5B%5D=font-weight&p%5B%5D=height&p%5B%5D=line-height&p%5B%5D=padding&p%5B%5D=position&p%5B%5D=width&p%5B%5D=z-index&xp=">apple.com</a></li>
+        <li><a href="http://cssdig.com/?url=yahoo.com&p%5B%5D=background&p%5B%5D=color&p%5B%5D=font&p%5B%5D=font-family&p%5B%5D=font-size&p%5B%5D=font-style&p%5B%5D=font-weight&p%5B%5D=height&p%5B%5D=line-height&p%5B%5D=padding&p%5B%5D=position&p%5B%5D=width&p%5B%5D=z-index&xp=">yahoo.com</a></li>
+        <li><a href="http://cssdig.com/?url=aol.com&p%5B%5D=background&p%5B%5D=color&p%5B%5D=font&p%5B%5D=font-family&p%5B%5D=font-size&p%5B%5D=font-style&p%5B%5D=font-weight&p%5B%5D=height&p%5B%5D=line-height&p%5B%5D=padding&p%5B%5D=position&p%5B%5D=width&p%5B%5D=z-index&xp=">aol.com</a> (lots and lots of pretty blues)</li>
+        <li><a href="http://cssdig.com/?url=msn.com&p%5B%5D=background&p%5B%5D=color&p%5B%5D=font&p%5B%5D=font-family&p%5B%5D=font-size&p%5B%5D=font-style&p%5B%5D=font-weight&p%5B%5D=height&p%5B%5D=line-height&p%5B%5D=padding&p%5B%5D=position&p%5B%5D=width&p%5B%5D=z-index&xp=">msn.com</a> (note the lone z-index value of 100000000)</li>
+    </ul>
+
+    <h2>How can I use it?</h2>
+    <p>
+        Looking through the results of your own websites you might notice you have too many colors, inconsistent font sizing, and strange z-index values. This knowledge can be the basis for a number of actions.
+    </p>
+
+    <ul>
+        <li>A site-wide refactor. Set better default margins and padding, consoldate colors, font sizes and line-heights.</li>
+        <li>Establish code syntax standards. #CCC and #cccccc are the same color but should they both appear? Provide your developers with coding guidelines.</li>
+        <li>Ensure that your style-guide standards are being followed, preventing rouge designers and developers from junking up the CSS.</li>
+    </ul>
+
+    <h2>How does it work?</h2>
+
+    <p>
+        CSS Dig looks all <code>link</code> tags with <code>rel=stylesheet</code> in the HTML at the URL you provide, excluding any that for whatever reason cannot be reached (paid web fonts, for example). It then searches through that combined CSS, grouping any matches with the properties provided in the form. Note that it will return results inside CSS comments.
+    </p>
+
+    <h2>What doesn't it do?</h2>
+
+    <p>
+        Since CSS Dig looks exclusively for CSS in <code>link</code> tags there are some limitations.
+
+        <ul>
+            <li>It doesn't parse any properties between style tags in the <code>head</code>.</li>
+            <li>It also doesn't parse inline styles.</li>
+            <li>It may have trouble with redirects and fail silently (I'm working on that).</li>
+        </ul>
+
+    </p>
+
+
+</div>

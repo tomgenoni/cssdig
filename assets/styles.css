@@ -16,6 +16,14 @@ p {
   padding: 0;
 }
 
+code {
+  font-family: monospace;
+  background: #f5f5f5;
+  border: 1px solid #e5e5e5;
+  padding: 1px 3px;
+  border-radius: 2px;
+}
+
 .button {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -132,10 +140,6 @@ h2:first-child {
   margin-top: 0;
 }
 
-.desc {
-  color: #666;
-}
-
 /* Form */
 
 .inputs {
@@ -182,6 +186,7 @@ textarea {
   margin-bottom: 10px;
   margin-top: 2px;
   font-family: Helvetica, sans;
+  font-size: 13px;
 }
 
 
@@ -297,4 +302,10 @@ textarea {
   max-width: 600px;
   min-width: 400px;
   font-size: 13px;
+  padding: 40px;
+}
+
+.about ul {
+  list-style: disc;
+  padding-left: 18px;
 }

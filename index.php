@@ -9,9 +9,6 @@
     <nav>
 
         <h1><a href=".">CSS Dig</a></h1>
-        <p class="desc">
-            Inspired by Nicolle Sullivan’s tip to “grep your styles”, CSS Dig unearths the properties and values of your CSS to help you refactor, standardize and maintain.
-        </p>
         <form action="" method="get">
             <input type="text" id="url" name="url" placeholder="Enter URL" value="<?php echo $_GET['url']; ?>"/>
             <div class="props">
@@ -121,12 +118,12 @@
 
                 </div>
             </div>
-            <textarea name="xp" id="xp" placeholder="Enter any additional, comma-separated properties you want to search for."><?php echo $_GET['xp']; ?></textarea>
+            <textarea name="xp" id="xp" placeholder="Enter any additional, comma-separated properties to search: top, left, background-size, etc."><?php echo $_GET['xp']; ?></textarea>
             <button class="button">Dig</button>
         </form>
 
         <ul class="links">
-            <li><a href="#">What is CSS Dig?</a></li>
+            <li><a href=".">About</a></li>
             <li><a href="https://github.com/tomgenoni/css-dig">GitHub</a></li>
             <li><a href="https://twitter.com/tomgenoni">@tomgenoni</a></li>
         </ul>
@@ -167,6 +164,8 @@
             } else {
                 echo "<div class='error'>You did not enter a valid URL.</div>";
             }
+        } else {
+            include 'about.html';
         }
 
     ?>
