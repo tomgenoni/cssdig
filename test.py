@@ -4,7 +4,7 @@ contents = "empty"
 bad_files = []
 good_files = []
 
-url = "http://thewirecutter.com/"
+url = ""
 
 req = urllib2.Request(url, headers={'User-Agent' : "Magic Browser"})
 try:
