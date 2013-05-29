@@ -13,7 +13,7 @@
             Inspired by Nicolle Sullivan’s tip to “grep your styles”, CSS Dig unearths the properties and values of your CSS to help you refactor, standardize and maintain.
         </p>
         <form action="" method="get">
-            <input type="text" id="url" name="url" placeholder="Enter URL" />
+            <input type="text" id="url" name="url" placeholder="Enter URL" value="<?php echo $_GET['url']; ?>"/>
             <div class="props">
                 <div class="col-left">
                     <div>
@@ -121,7 +121,7 @@
 
                 </div>
             </div>
-            <textarea name="xp" id="xp" placeholder="Enter any additional, comma-separated properties you want to search for."></textarea>
+            <textarea name="xp" id="xp" placeholder="Enter any additional, comma-separated properties you want to search for."><?php echo $_GET['xp']; ?></textarea>
             <button class="button">Dig</button>
         </form>
 
