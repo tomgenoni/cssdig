@@ -10,7 +10,7 @@
 
         <h1><a href=".">CSS Dig</a></h1>
         <p class="desc">
-            Unearthing the properties and values of your CSS to help refactor, standardize and maintain. That or just stare in horror.
+            Inspired by Nicolle Sullivan’s tip to “grep your styles”, CSS Dig unearths the properties and values of your CSS to help you refactor, standardize and maintain.
         </p>
         <form action="" method="get">
             <input type="text" id="url" name="url" placeholder="Enter URL" />
@@ -21,19 +21,15 @@
                         <label for="prop-background">background</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="background-size" id="prop-background-size" checked="checked">
-                        <label for="prop-background-size">background-size</label>
-                    </div>
-                    <div>
                         <input type="checkbox" name="p[]" value="color" id="prop-color" checked="checked">
                         <label for="prop-color">color</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="display" id="prop-display" checked="checked">
+                        <input type="checkbox" name="p[]" value="display" id="prop-display">
                         <label for="prop-display">display</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="float" id="prop-float" checked="checked">
+                        <input type="checkbox" name="p[]" value="float" id="prop-float">
                         <label for="prop-float">float</label>
                     </div>
                     <div>
@@ -65,29 +61,49 @@
                         <label for="prop-line-height">line-height</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="margin" id="prop-margin" checked="checked">
+                        <input type="checkbox" name="p[]" value="margin" id="prop-margin">
                         <label for="prop-margin">margin</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="margin-top" id="prop-margin-top" checked="checked">
+                        <input type="checkbox" name="p[]" value="margin-top" id="prop-margin-top">
                         <label for="prop-margin-top">margin-top</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="p[]" value="margin-right" id="prop-margin-right" checked="checked">
-                        <label for="prop-margin-right">margin-right</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="p[]" value="margin-bottom" id="prop-margin-bottom" checked="checked">
-                        <label for="prop-margin-bottom">margin-bottom</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="p[]" value="margin-left" id="prop-margin-left" checked="checked">
-                        <label for="prop-margin-left">margin-left</label>
                     </div>
                 </div>
                 <div class="col-right">
                     <div>
-                        <input type="checkbox" name="p[]" value="overflow" id="prop-overflow" checked="checked">
+                        <input type="checkbox" name="p[]" value="margin-right" id="prop-margin-right">
+                        <label for="prop-margin-right">margin-right</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="p[]" value="margin-bottom" id="prop-margin-bottom">
+                        <label for="prop-margin-bottom">margin-bottom</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="p[]" value="margin-left" id="prop-margin-left">
+                        <label for="prop-margin-left">margin-left</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="p[]" value="padding" id="prop-padding" checked="checked">
+                        <label for="prop-padding">padding</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="p[]" value="padding-top" id="prop-padding-top">
+                        <label for="prop-padding-top">padding-top</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="p[]" value="padding-right" id="prop-padding-right">
+                        <label for="prop-padding-right">padding-right</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="p[]" value="padding-bottom" id="prop-padding-bottom">
+                        <label for="prop-padding-bottom">padding-bottom</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="p[]" value="padding-left" id="prop-padding-left">
+                        <label for="prop-padding-left">padding-left</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="p[]" value="overflow" id="prop-overflow">
                         <label for="prop-overflow">overflow</label>
                     </div>
                     <div>
@@ -95,48 +111,8 @@
                         <label for="prop-position">position</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="top" id="prop-top" checked="checked">
-                        <label for="prop-top">top</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="p[]" value="right" id="prop-right" checked="checked">
-                        <label for="prop-right">right</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="p[]" value="bottom" id="prop-bottom" checked="checked">
-                        <label for="prop-bottom">bottom</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="p[]" value="left" id="prop-left" checked="checked">
-                        <label for="prop-left">left</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="p[]" value="padding" id="prop-padding" checked="checked">
-                        <label for="prop-padding">padding</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="p[]" value="padding-top" id="prop-padding-top" checked="checked">
-                        <label for="prop-padding-top">padding-top</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="p[]" value="padding-right" id="prop-padding-right" checked="checked">
-                        <label for="prop-padding-right">padding-right</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="p[]" value="padding-bottom" id="prop-padding-bottom" checked="checked">
-                        <label for="prop-padding-bottom">padding-bottom</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="p[]" value="padding-left" id="prop-padding-left" checked="checked">
-                        <label for="prop-padding-left">padding-left</label>
-                    </div>
-                    <div>
                         <input type="checkbox" name="p[]" value="width" id="prop-width" checked="checked">
                         <label for="prop-width">width</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="p[]" value="zoom" id="prop-zoom" checked="checked">
-                        <label for="prop-zoom">zoom</label>
                     </div>
                     <div>
                         <input type="checkbox" name="p[]" value="z-index" id="prop-z-index" checked="checked">
@@ -145,11 +121,12 @@
 
                 </div>
             </div>
-            <button class="button">Dig</button>
+            <textarea name="xp" id="xp" placeholder="Enter any additional, comma-separated properties you want to search for."></textarea>
+            <button class="button">Start Digging</button>
         </form>
 
         <ul class="links">
-            <li><a href="#">About</a></li>
+            <li><a href="#">What is CSS Dig?</a></li>
             <li><a href="https://github.com/tomgenoni/css-dig">GitHub</a></li>
             <li><a href="https://twitter.com/tomgenoni">@tomgenoni</a></li>
         </ul>
@@ -166,6 +143,12 @@
 
             $url_parsed = parse_url($url);
 
+            if ($url_parsed['scheme'] == '') {
+                $url = "http://" . $url;
+            }
+
+            $url_parsed = parse_url($url);
+
             if ($url_parsed['scheme'] == 'http' || $url_parsed['scheme'] == 'https'){
 
                 $handle = @fopen($url,'r');
@@ -179,7 +162,7 @@
                    echo "<div class='error'><b>" . $url . "</b> doesn't appear to be a valid, working website. Please try again.</div>";
                 }
             } else {
-                echo "<div class='error'>The URL must be in the form of http://domain.com or https://domain.com, with or without 'www'.</div>";
+                echo "<div class='error'>You did not enter a valid URL.</div>";
             }
         }
 

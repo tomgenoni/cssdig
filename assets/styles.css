@@ -11,15 +11,48 @@ a {
   color: #08c;
 }
 
+p {
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+.button {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Helvetica", sans;
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 3px;
+  font-size: 13px;
+  line-height: 1;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
+  white-space: nowrap;
+  margin: 0;
+  font-weight: 600;
+  min-width: 60px;
+  border: 1px solid rgba(0, 0, 0, .3);
+  text-shadow: 0 -1px 0px rgba(0, 0, 0, .3);
+  box-shadow: inset 0 1px 0px rgba(255, 255, 255, .2);
+  background: #08c;
+}
+
+.button:hover,
+.button:active {
+  background: #0074ae;
+}
+
+.button:active {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, .25);
+}
+
+
 .error {
   background: #eab7b7;
-  padding: 10px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
+  padding: 10px 20px;
   color: #a12020;
+  border-radius: 3px;
 }
 .error:before {
   content:"Error: ";
@@ -78,14 +111,11 @@ ul {
 h1 {
   font-size: 30px;
   line-height: 1;
-  font-weight: 600;
+  font-weight: 300;
   margin: 0 0 10px;
   letter-spacing: -1px;
 }
 
-h1 a {
-  color: inherit;
-}
 h1 span {
   color: #999;
 }
@@ -93,9 +123,13 @@ h1 span {
 h2 {
   font-size: 16px;
   line-height: 1;
-  font-weight: 400;
-  margin: 0 0 10px;
+  font-weight: 600;
+  margin: 40px 0 10px;
   padding: 0;
+}
+
+h2:first-child {
+  margin-top: 0;
 }
 
 .desc {
@@ -103,10 +137,6 @@ h2 {
 }
 
 /* Form */
-
-form {
-  margin-top: 20px;
-}
 
 .inputs {
   margin-bottom: 10px;
@@ -125,6 +155,19 @@ form {
 .col-right {
   width: 48%;
   float: right;
+}
+
+textarea {
+  width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  display: block;
+  font: 11px "Helvetica", sans;
+  height: 60px;
+  margin-bottom: 15px;
+  border-radius: 3px;
+  padding: 4px;
 }
 
 #url {
@@ -235,11 +278,23 @@ form {
 
 /* Inline color boxes */
 
+.color-example-wrap {
+  position: relative;
+  padding-left: 20px;
+}
+
 .color-example {
-  float: left;
-  display: inline-block;
-  margin-right: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 14px;
   height: 14px;
   box-shadow: 0 0 3px rgba(0, 0, 0, .2)
+}
+
+
+.about {
+  max-width: 600px;
+  min-width: 400px;
+  font-size: 13px;
 }

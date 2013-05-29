@@ -109,8 +109,9 @@ for p in properties:
         color_example = ""
         key = key.lstrip()
         if p == "color" or p == "background":
-            color_example = "<span class='color-example' style='background:"+key+"'></span>"
-        html += "<tr>\n<td>" + color_example + p +": " + "%s;</td><td>%s</td>\n</tr>\n" % (key, value)
+            html += "<tr>\n<td><div class='color-example-wrap'><span class='color-example' style='background:"+key+"'></span>" + p +": " + "%s;</div></td><td>%s</td>\n</tr>\n" % (key, value)
+        else:
+            html += "<tr>\n<td>" + p +": " + "%s;</td><td>%s</td>\n</tr>\n" % (key, value)
     html += "</table>\n"
     html += "</div>\n"
 
