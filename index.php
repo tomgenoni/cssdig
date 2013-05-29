@@ -13,7 +13,7 @@
             Inspired by Nicolle Sullivan’s tip to “grep your styles”, CSS Dig unearths the properties and values of your CSS to help you refactor, standardize and maintain.
         </p>
         <form action="" method="get">
-            <input type="text" id="url" name="url" placeholder="Enter URL" value="atomeye.com"/>
+            <input type="text" id="url" name="url" placeholder="Enter URL" />
             <div class="props">
                 <div class="col-left">
                     <div>
@@ -162,7 +162,7 @@
                     echo $results;
                 }
                 else{
-                   echo "<div class='error'><b>" . $url . "</b> doesn't appear to be a valid, working website. Please try again.</div>";
+                   echo "<div class='error'><b>" . $url . "</b> doesn't appear to be a valid working website. Please try again.</div>";
                 }
             } else {
                 echo "<div class='error'>You did not enter a valid URL.</div>";
