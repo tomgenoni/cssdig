@@ -14,15 +14,15 @@
             <div class="props">
                 <div class="col-left">
                     <div>
-                        <input type="checkbox" name="p[]" value="background" id="prop-background" checked="checked">
+                        <input type="checkbox" name="p[1]" value="background" id="prop-background" checked="checked">
                         <label for="prop-background">background</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="color" id="prop-color" checked="checked">
+                        <input type="checkbox" name="p[2]" value="color" id="prop-color" checked="checked">
                         <label for="prop-color">color</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="display" id="prop-display">
+                        <input type="checkbox" name="p[3]" value="display" id="prop-display" <?php if (isset($_GET['p'][3])){ echo "checked='checked'"; } ?>>
                         <label for="prop-display">display</label>
                     </div>
                     <div>

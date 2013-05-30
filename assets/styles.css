@@ -129,7 +129,7 @@ h1 span {
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1;
   font-weight: 400;
   margin: 40px 0 10px;
@@ -303,9 +303,14 @@ textarea {
   min-width: 400px;
   font-size: 13px;
   padding: 40px;
+  font-family: Georgia, Times, serif;
 }
 
 .about ul {
   list-style: disc;
   padding-left: 18px;
+}
+
+.about p:first-child {
+  font-size: 20px;
 }

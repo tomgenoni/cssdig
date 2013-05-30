@@ -1,7 +1,5 @@
 <div class="about">
 
-    <h2>What is CSS Dig?</h2>
-
     <p>
         Inspired by <a href="http://www.stubbornella.org/content/">Nicolle Sullivan’s</a> advice to “grep your styles”, CSS Dig unearths CSS properties and values from almost any website to help refactor, standardize and maintain.
     </p>
@@ -19,7 +17,7 @@
 
     <h2>How can it help me?</h2>
     <p>
-        Looking through the results of your own websites you might notice you have too many colors, inconsistent font sizing, and strange z-index values. This knowledge can be the basis for a number of actions.
+        Looking through the CSS Dig results of your own websites you might notice you have too many colors, inconsistent font sizing, and strange z-index values. This knowledge can be the basis for a number of actions:
     </p>
 
     <ul>
@@ -31,7 +29,7 @@
     <h2>How does it work?</h2>
 
     <p>
-        CSS Dig looks all <code>link</code> tags with <code>rel=stylesheet</code> in the HTML at the URL you provide, excluding any that for whatever reason cannot be reached (paid web fonts, for example). It then searches through that combined CSS, grouping any matches with the properties provided in the form. Note that it will return results inside CSS comments.
+        CSS Dig collects the CSS from all <code>link</code> tags with <code>rel=stylesheet</code> in the HTML at the URL you provide, excluding any that for whatever reason cannot be reached (paid web fonts, for example). It then searches through that combined code, grouping any matches with the properties provided in the form. Note that it will return results inside CSS comments.
     </p>
 
     <h2>What doesn't it do?</h2>
@@ -42,7 +40,7 @@
         <ul>
             <li>It doesn't parse any properties between style tags in the <code>head</code>.</li>
             <li>It also doesn't parse inline styles.</li>
-            <li>It may have trouble with redirects and fail silently (I'm working on that).</li>
+            <li>It may have trouble with redirects and fail silently on some websites (I'm working on that).</li>
         </ul>
 
     </p>
