@@ -14,11 +14,11 @@
             <div class="props">
                 <div class="col-left">
                     <div>
-                        <input type="checkbox" name="p[1]" value="background" id="prop-background" checked="checked">
+                        <input type="checkbox" name="p[1]" value="background" id="prop-background" <?php if ( ! isset($_GET['p'] )){ echo "checked='checked'"; } else if (isset($_GET['p'][1])){ echo "checked='checked'"; } ?>>
                         <label for="prop-background">background</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[2]" value="color" id="prop-color" checked="checked">
+                        <input type="checkbox" name="p[2]" value="color" id="prop-color" <?php if ( ! isset($_GET['p'] )){ echo "checked='checked'"; } else if (isset($_GET['p'][2])){ echo "checked='checked'"; } ?>>
                         <label for="prop-color">color</label>
                     </div>
                     <div>
@@ -26,93 +26,93 @@
                         <label for="prop-display">display</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="float" id="prop-float">
+                        <input type="checkbox" name="p[4]" value="float" id="prop-float" <?php if (isset($_GET['p'][4])){ echo "checked='checked'"; } ?>>
                         <label for="prop-float">float</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="font" id="prop-font" checked="checked">
+                        <input type="checkbox" name="p[5]" value="font" id="prop-font" <?php if ( ! isset($_GET['p'] )){ echo "checked='checked'"; } else if (isset($_GET['p'][5])){ echo "checked='checked'"; } ?>>
                         <label for="prop-font">font</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="font-family" id="prop-font-family" checked="checked">
+                        <input type="checkbox" name="p[6]" value="font-family" id="prop-font-family" <?php if ( ! isset($_GET['p'] )){ echo "checked='checked'"; } else if (isset($_GET['p'][6])){ echo "checked='checked'"; } ?>>
                         <label for="prop-font-family">font-family</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="font-size" id="prop-font-size" checked="checked">
+                        <input type="checkbox" name="p[7]" value="font-size" id="prop-font-size" <?php if ( ! isset($_GET['p'] )){ echo "checked='checked'"; } else if (isset($_GET['p'][7])){ echo "checked='checked'"; } ?>>
                         <label for="prop-font-size">font-size</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="font-style" id="prop-font-style" checked="checked">
+                        <input type="checkbox" name="p[8]" value="font-style" id="prop-font-style" <?php if ( ! isset($_GET['p'] )){ echo "checked='checked'"; } else if (isset($_GET['p'][8])){ echo "checked='checked'"; } ?>>
                         <label for="prop-font-style">font-style</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="font-weight" id="prop-font-weight" checked="checked">
+                        <input type="checkbox" name="p[9]" value="font-weight" id="prop-font-weight" <?php if ( ! isset($_GET['p'] )){ echo "checked='checked'"; } else if (isset($_GET['p'][9])){ echo "checked='checked'"; } ?>>
                         <label for="prop-font-weight">font-weight</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="height" id="prop-height" checked="checked">
+                        <input type="checkbox" name="p[10]" value="height" id="prop-height" <?php if ( ! isset($_GET['p'] )){ echo "checked='checked'"; } else if (isset($_GET['p'][10])){ echo "checked='checked'"; } ?>>
                         <label for="prop-height">height</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="line-height" id="prop-line-height" checked="checked">
+                        <input type="checkbox" name="p[11]" value="line-height" id="prop-line-height" <?php if ( ! isset($_GET['p'] )){ echo "checked='checked'"; } else if (isset($_GET['p'][11])){ echo "checked='checked'"; } ?>>
                         <label for="prop-line-height">line-height</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="margin" id="prop-margin">
+                        <input type="checkbox" name="p[12]" value="margin" id="prop-margin" <?php if (isset($_GET['p'][12])){ echo "checked='checked'"; } ?>>
                         <label for="prop-margin">margin</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="margin-top" id="prop-margin-top">
+                        <input type="checkbox" name="p[13]" value="margin-top" id="prop-margin-top" <?php if (isset($_GET['p'][13])){ echo "checked='checked'"; } ?>>
                         <label for="prop-margin-top">margin-top</label>
                     </div>
                 </div>
                 <div class="col-right">
                     <div>
-                        <input type="checkbox" name="p[]" value="margin-right" id="prop-margin-right">
+                        <input type="checkbox" name="p[14]" value="margin-right" id="prop-margin-right" <?php if (isset($_GET['p'][14])){ echo "checked='checked'"; } ?>>
                         <label for="prop-margin-right">margin-right</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="margin-bottom" id="prop-margin-bottom">
+                        <input type="checkbox" name="p[15]" value="margin-bottom" id="prop-margin-bottom" <?php if (isset($_GET['p'][15])){ echo "checked='checked'"; } ?>>
                         <label for="prop-margin-bottom">margin-bottom</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="margin-left" id="prop-margin-left">
+                        <input type="checkbox" name="p[16]" value="margin-left" id="prop-margin-left" <?php if (isset($_GET['p'][16])){ echo "checked='checked'"; } ?>>
                         <label for="prop-margin-left">margin-left</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="padding" id="prop-padding" checked="checked">
+                        <input type="checkbox" name="p[17]" value="padding" id="prop-padding" <?php if ( ! isset($_GET['p'] )){ echo "checked='checked'"; } else if (isset($_GET['p'][17])){ echo "checked='checked'"; } ?>>
                         <label for="prop-padding">padding</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="padding-top" id="prop-padding-top">
+                        <input type="checkbox" name="p[18]" value="padding-top" id="prop-padding-top" <?php if (isset($_GET['p'][18])){ echo "checked='checked'"; } ?>>
                         <label for="prop-padding-top">padding-top</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="padding-right" id="prop-padding-right">
+                        <input type="checkbox" name="p[19]" value="padding-right" id="prop-padding-right" <?php if (isset($_GET['p'][19])){ echo "checked='checked'"; } ?>>
                         <label for="prop-padding-right">padding-right</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="padding-bottom" id="prop-padding-bottom">
+                        <input type="checkbox" name="p[20]" value="padding-bottom" id="prop-padding-bottom" <?php if (isset($_GET['p'][20])){ echo "checked='checked'"; } ?>>
                         <label for="prop-padding-bottom">padding-bottom</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="padding-left" id="prop-padding-left">
+                        <input type="checkbox" name="p[21]" value="padding-left" id="prop-padding-left" <?php if (isset($_GET['p'][21])){ echo "checked='checked'"; } ?>>
                         <label for="prop-padding-left">padding-left</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="overflow" id="prop-overflow">
+                        <input type="checkbox" name="p[22]" value="overflow" id="prop-overflow" <?php if (isset($_GET['p'][22])){ echo "checked='checked'"; } ?>>
                         <label for="prop-overflow">overflow</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="position" id="prop-position" checked="checked">
+                        <input type="checkbox" name="p[23]" value="position" id="prop-position" <?php if ( ! isset($_GET['p'] )){ echo "checked='checked'"; } else if (isset($_GET['p'][23])){ echo "checked='checked'"; } ?>>
                         <label for="prop-position">position</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="width" id="prop-width" checked="checked">
+                        <input type="checkbox" name="p[24]" value="width" id="prop-width" <?php if ( ! isset($_GET['p'] )){ echo "checked='checked'"; } else if (isset($_GET['p'][24])){ echo "checked='checked'"; } ?>>
                         <label for="prop-width">width</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="p[]" value="z-index" id="prop-z-index" checked="checked">
+                        <input type="checkbox" name="p[25]" value="z-index" id="prop-z-index" <?php if ( ! isset($_GET['p'] )){ echo "checked='checked'"; } else if (isset($_GET['p'][25])){ echo "checked='checked'"; } ?>>
                         <label for="prop-z-index">z-index</label>
                     </div>
 
