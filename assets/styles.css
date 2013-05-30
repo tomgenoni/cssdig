@@ -29,7 +29,7 @@ code {
   box-sizing: border-box;
   cursor: pointer;
   display: inline-block;
-  font-family: "Helvetica", sans;
+  font-family: Helvetica, sans;
   color: #fff;
   padding: 8px 10px;
   border-radius: 3px;
@@ -134,6 +134,7 @@ h2 {
   font-weight: 400;
   margin: 40px 0 10px;
   padding: 0;
+  font-family: Helvetica, sans;
 }
 
 h2:first-child {
@@ -167,7 +168,7 @@ textarea {
   box-sizing: border-box;
   border: 1px solid #ddd;
   display: block;
-  font: 11px "Helvetica", sans;
+  font: 11px Helvetica, sans;
   height: 60px;
   margin-bottom: 15px;
   border-radius: 3px;
@@ -313,4 +314,5 @@ textarea {
 
 .about p:first-child {
   font-size: 20px;
+  margin-bottom: 30px;
 }

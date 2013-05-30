@@ -93,9 +93,7 @@ for u in css_urls_all:
             css_urls_bad.append(u)
 
 # Check for styles in head.
-style_css = ""
-for s in soup.find_all('style'):
-    style_css += s.get_text()
+style_css = ''.join([s.get_text() for s in soup.find_all('style')])
 
 css_combined = css_combined + style_css
 
