@@ -7,7 +7,7 @@ from cStringIO import StringIO
 
 start_time = time.time()
 
-# Get URL and properties from PHP
+#Get URL and properties from PHP
 url = sys.argv[1]
 properties = sys.argv[2].split(",")
 extra_properties = sys.argv[3]
@@ -18,7 +18,7 @@ if extra_properties:
     properties.sort()
 
 # Uncomment to debug
-# url = "http://en.wikipedia.org/wiki/Main_Page/"
+# url = "http://www.huffingtonpost.com/"
 # properties = ['background']
 
 # Domains that can't or shouldn't be included.
@@ -94,8 +94,8 @@ for u in css_urls_all:
 
 # Check for styles in head.
 style_css = ''.join([s.get_text() for s in soup.find_all('style')])
-
-css_combined = css_combined + style_css
+if not style_css:
+    css_combined = css_combined + style_css
 
 # Find all instances of !important.
 important_values = re.findall("!important", css_combined)
