@@ -39,8 +39,6 @@ css_urls_all = []
 css_urls_clean = []
 css_urls_bad = []
 css_combined = ""
-css_urls_list_good = ""
-css_urls_list_bad = ""
 
 def getRemoteURL(url):
     req = urllib2.Request(url, headers={'User-Agent' : "Magic Browser"})
@@ -126,16 +124,20 @@ for p in properties:
     html += "</table>\n"
     html += "</div>\n"
 
-for u in css_urls_clean:
-    css_urls_list_good += "<li><a href='"+u+"'>" + u + "</a></li>"
+
+# CSS found in <style> blocks.
+style_css = ''.join([s.get_text() for s in soup.find_all('style')])
+
+# HTML for parsed CSS files.
+css_urls_list_good = ''.join(["<li><a href='"+u+"'>" + u + "</a></li>" for u in css_urls_clean])
 
 report_url = "http://cssdig.com/?url=" + url
 for p in properties:
     report_url += "&p[]=" + p
 
+# HTML for unreachable CSS files.
 if css_urls_bad:
-    for b in css_urls_bad:
-        css_urls_list_bad += "<li><a href='"+b+"'>" + b + "</a></li>"
+    css_urls_list_bad = ''.join(["<li><a href='"+b+"'>" + b + "</a></li>" for b in css_urls_bad])
 
 # report_url = urllib2.quote(report_url.encode("utf8"))
 report_tinyurl = tinyurl.create_one(report_url)
