@@ -92,6 +92,13 @@ for u in css_urls_all:
         except urllib2.HTTPError, e:
             css_urls_bad.append(u)
 
+style_css = ""
+
+for s in soup.find_all('style'):
+    style_css += s.get_text()
+
+css_combined = css_combined + style_css
+
 # Find all instances of !important.
 important_values = re.findall("!important", css_combined)
 html = "<div class='table-wrap'>\n"
