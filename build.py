@@ -15,6 +15,8 @@ extra_properties = sys.argv[3]
 if extra_properties:
     extra_properties = extra_properties.split(",")
     properties = properties + extra_properties
+    # Remove any duplicates.
+    properties = list(set(properties))
     properties.sort()
 
 # Uncomment to debug
