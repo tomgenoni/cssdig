@@ -92,8 +92,8 @@ for u in css_urls_all:
         except urllib2.HTTPError, e:
             css_urls_bad.append(u)
 
+# Check for styles in head.
 style_css = ""
-
 for s in soup.find_all('style'):
     style_css += s.get_text()
 
