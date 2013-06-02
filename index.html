@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function(){
+
+
+        var url = "http://www.cnn.com/";
+
+        $.ajax({
+            url: "/app/",
+            type: 'post',
+            data: url,
+            success: function(data, status){
+                console.log(data);
+            }
+        });
+
+
+    })
+
+</script>
+
+</head>
+<body>
+foo
+</body>
+</html>
