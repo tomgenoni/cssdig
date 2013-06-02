@@ -1,21 +1,9 @@
-import os, re, urllib2, time, datetime, operator, sys, gzip, tinyurl
+def application(environ, start_response):
+    status = '200 OK'
+    output = 'Hello World!'
 
-contents = "empty"
-bad_files = []
-good_files = []
+    response_headers = [('Content-type', 'text/plain'),
+                        ('Content-Length', str(len(output)))]
+    start_response(status, response_headers)
 
-url = ""
-
-req = urllib2.Request(url, headers={'User-Agent' : "Magic Browser"})
-try:
-    resp = urllib2.urlopen(req)
-    good_files.append(url)
-except urllib2.HTTPError, e:
-    print e.code
-    bad_files.append(url)
-
-for b in bad_files:
-    print "bad: " + b
-
-for g in good_files:
-    print "good: " + g
+    return [output]

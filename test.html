@@ -1,53 +1,33 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Document</title>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-<style>
+        <title>test</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script>
 
-table {
-color: red;
-}
+            $(function()
+            {
+                $('#clickme').click(function(){
+                     console.log('Im going to start processing');
 
+                    $.ajax({
+                        url: "test.py",
+                        type: "post",
+                        datatype:"json",
+                        data: {'key':'value','key2':'value2'},
+                        success: function(response){
+                            console.log(response.message);
+                            console.log(response.keys);
+                        }
+                    });
+                });
+            });
 
-ul {
-margin: 0;
-padding: 0;
-list-style: none;
-display: -webkit-flex;
-display: -moz-flex;
-display: flex;
--webkit-box-orient: vertical;
--moz-box-orient: vertical;
--ms-box-orient: vertical;
-box-orient: vertical;
+        </script>
+    </head>
+    <body>
+        <button id="clickme"> click me </button>
+    </body>
 
-}
-
-li {
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
-min-width: 0;
-}
-
-</style>
-
-</head>
-<body>
-
-<ul><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni reiciendis molestias sapiente deserunt quam impedit autem iure dolores alias. Cum totam quidem nam earum quam laudantium aperiam necessitatibus deserunt ipsa dolores consequuntur at sunt sed fugit cumque!</li></ul>
-
-
-<table>
-<tr>
-    <td>
-        <ul><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni reiciendis molestias sapiente deserunt quam impedit autem iure dolores alias. Cum totam quidem nam earum quam laudantium aperiam necessitatibus deserunt ipsa dolores consequun</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni reiciendis molestias sapiente deserunt quam impedit autem iure dolores alias. Cum totam quidem nam earum quam laudantium aperiam necessitatibus deserunt ipsa dolores consequun</li></ul>
-    </td>
-</tr>
-</table>
-
-
-</body>
 </html>
