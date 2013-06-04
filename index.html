@@ -9,6 +9,23 @@
 
     $(document).ready(function(){
 
+        function countInArray(array, what) {
+            var count = 0;
+            for (var i = 0; i < array.length; i++) {
+                if (array[i] === what) {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        function unique(list) {
+            var result = [];
+            $.each(list, function(i, e) {
+                if ($.inArray(e, result) == -1) result.push(e);
+            });
+            return result;
+        }
 
         var url = "http://atomeye.com/";
 
@@ -31,8 +48,13 @@
                 $.each(properties, function(index, value) {
                     var re = new RegExp(value+':(.*?)(?=[;|}|)])', 'gi');
                     delcaration_array = css_combined.match(re);
-                    console.log(value);
-                    console.log(delcaration_array);
+                    var uniques = unique(delcaration_array)
+
+                    $.each(uniques, function(i,declaration) {
+                        count = countInArray(delcaration_array, declaration);
+                        console.log(declaration +" : "+count);
+                    });
+
                 });
 
 
