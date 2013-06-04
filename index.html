@@ -40,6 +40,8 @@
                 var css_url_bad = data['css_url_bad'];
                 var properties = data['properties'];
 
+                // property match (?:[a-z|-]*?(?=:\s*([^;>]*?)(?=[;">}])))
+
                 var important_len = (css_combined.match(/!important/g)).length;
 
                 var css_json = CSSJSON.toJSON(css_combined);
@@ -47,17 +49,17 @@
 
                 $.each(properties, function(index, value) {
                     var re = new RegExp(value+':(.*?)(?=[;|}|)])', 'gi');
-                    delcaration_array = css_combined.match(re);
-                    var uniques = unique(delcaration_array)
+                    declaration_arr = css_combined.match(re);
+                    var uniques_arr = unique(declaration_arr)
 
-                    $.each(uniques, function(i,declaration) {
-                        count = countInArray(delcaration_array, declaration);
+                    $.each(uniques_arr, function(i,declaration) {
+                        count = countInArray(declaration_arr, declaration);
                         console.log(declaration +" : "+count);
                     });
 
                 });
 
-
+                $("#css").html(css)
 
             }
         });
