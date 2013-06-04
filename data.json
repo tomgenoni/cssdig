@@ -1,0 +1,22 @@
+{
+    "css_dump": "body { background:red }",
+    "css_url_clean": [
+        "http://test.com/css1.css",
+        "http://test.com/css2.css"
+    ],
+    "css_url_bad": [
+        "http://test.com/css3.css"
+    ],
+    "property": [
+        { "name": "margin", "total": 20, "entries": [
+                { "declaration": "margin: 5px;", "total": 10},
+                { "declaration": "margin: 10px;", "total": 2}
+            ]
+        },
+        { "name": "color", "total": 10, "entries": [
+                { "declaration": "color: 5px;", "total": 5},
+                { "declaration": "color: 10px;", "total": 4}
+            ]
+        }
+    ]
+}

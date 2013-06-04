@@ -4,22 +4,41 @@
     <meta charset="UTF-8">
     <title>Document</title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="assets/js/cssjson.js"></script>
 <script>
 
     $(document).ready(function(){
 
 
-        var url = "http://www.cnn.com/";
+        var url = "http://atomeye.com/";
 
         $.ajax({
             url: "/application/",
             type: 'post',
             data: url,
             success: function(data, status){
-                console.log(data);
+
+                var css_combined = data['css_combined'];
+                var css_url_clean = data['css_url_clean'];
+                var css_url_bad = data['css_url_bad'];
+                var properties = data['properties'];
+
+                var important_len = (css_combined.match(/!important/g)).length;
+
+                var css_json = CSSJSON.toJSON(css_combined);
+                var css = CSSJSON.toCSS(css_json);
+
+                $.each(properties, function(index, value) {
+                    var re = new RegExp(value+':(.*?)(?=[;|}|)])', 'gi');
+                    delcaration_array = css_combined.match(re);
+                    console.log(value);
+                    console.log(delcaration_array);
+                });
+
+
+
             }
         });
-
 
     })
 
@@ -27,6 +46,8 @@
 
 </head>
 <body>
-foo
+
+<pre id="css"></pre>
+
 </body>
 </html>

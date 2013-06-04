@@ -1,10 +1,8 @@
-import os, re, urllib2, time, datetime, operator, sys, gzip, tinyurl
+import os, re, urllib2, time, datetime, operator, sys, gzip
 import tinycss
+css = urllib2.urlopen('http://atomeye.com/assets/css/style.css').read()
 
 properties = []
-
-css = urllib2.urlopen('http://localhost/css-dig/assets/styles.css').read()
-
 parser = tinycss.make_parser()
 
 for r in parser.parse_stylesheet(css).rules:
@@ -14,5 +12,4 @@ for r in parser.parse_stylesheet(css).rules:
 properties = list(set(properties))
 properties.sort()
 
-for p in properties:
-    print p
+print properties
