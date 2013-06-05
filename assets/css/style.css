@@ -1,0 +1,269 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Begin Styles */
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+#wrap {
+    overflow: hidden;
+    height: 100%;
+    min-width: 800px;
+}
+
+#nav, #report, #css {
+    height: 100%;
+    float: left;
+    overflow-y: auto;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+#nav {
+    width: 20%;
+    background: #f9f9f9;
+    border-right: 1px dashed #eee;
+}
+
+#report {
+    width: 50%;
+    padding-top: 40px;
+}
+
+#css {
+    width: 30%;
+    padding-top: 40px;
+    background: #f9f9f9;
+    color: #999;
+}
+
+h2 {
+    position: fixed;
+    top: 0;
+    padding: 2px 15px;
+    background: #ccc;
+    color: #fff;
+    font-weight: 700;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font: 11px/1.5 Helvetica, sans;
+    color: #333;
+    background: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: #08c;
+}
+
+p {
+    margin: 0 0 10px;
+    padding: 0;
+}
+
+code {
+    font-family: "Source Code Pro", monospace;
+    background: #f5f5f5;
+    border: 1px solid #e5e5e5;
+    padding: 0 3px;
+    border-radius: 2px;
+}
+
+pre {
+    font-family: "Source Code Pro", monospace;
+}
+
+.button {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Helvetica, sans;
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 3px;
+    font-size: 13px;
+    line-height: 1;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
+    white-space: nowrap;
+    margin: 0;
+    font-weight: 600;
+    min-width: 60px;
+    border: 1px solid rgba(0, 0, 0, .3);
+    text-shadow: 0 -1px 0px rgba(0, 0, 0, .3);
+    box-shadow: inset 0 1px 0px rgba(255, 255, 255, .2);
+    background: #08c;
+}
+
+.button:hover,
+.button:active {
+    background: #0074ae;
+}
+
+.button:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, .25);
+}
+
+
+.error {
+    background: #eab7b7;
+    padding: 10px 20px;
+    color: #a12020;
+    border-radius: 3px;
+}
+.error:before {
+    content:"Error: ";
+    font-weight: bold;
+}
+
+
+/* Form */
+
+textarea {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    display: block;
+    font: 11px Helvetica, sans;
+    height: 60px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    padding: 4px;
+}
+
+#url {
+    border: none;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 4px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    margin-top: 2px;
+    font-family: Helvetica, sans;
+    font-size: 13px;
+}
+
+
+/* Content */
+
+.report-entry {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 40px 0;
+}
+
+.report-entry tr td  {
+    padding: 4px 4px;
+    vertical-align: top;
+}
+
+
+.report-entry thead tr td  {
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.report-entry tbody tr td  {
+    border-top: 1px solid #f5f5f5;
+    padding: 4px 4px;
+    word-wrap: break-word;
+    vertical-align: top;
+}
+
+.report-entry tr td:last-child {
+    width: 1px;
+    text-align: right;
+}
+
+.report-entry tr.totals td {
+    font-weight: 700;
+}
+
+
+
+/* Inline color boxes */
+
+.color-example-wrap {
+    position: relative;
+    padding-left: 20px;
+}
+
+.color-example {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .2)
+}
+
+
+.about {
+    max-width: 600px;
+    min-width: 400px;
+    font-size: 13px;
+    padding: 40px;
+    font-family: Georgia, Times, serif;
+}
+
+.about ul {
+    list-style: disc;
+    padding-left: 18px;
+}
+
+.about p:first-child {
+    font-size: 20px;
+    margin-bottom: 30px;
+}

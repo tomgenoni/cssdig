@@ -1,4 +1,9 @@
-import os, re, urllib2, time, datetime, operator, sys, gzip, json, tinycss
+# def application(environ, start_response):
+#     start_response('200 OK', [('Content-Type', 'text/plain')])
+#     return environ['wsgi.input']
+
+
+import os, re, urllib2, time, datetime, operator, sys, gzip, json
 from urlparse import urlparse, urljoin, urlunparse
 from bs4 import BeautifulSoup
 from cStringIO import StringIO
@@ -89,18 +94,7 @@ def application(environ, start_response):
     if not style_css:
         css_combined = css_combined + style_css
 
-    # Create array of the unique properites
-    properties = []
-    parser = tinycss.make_parser()
-
-    for r in parser.parse_stylesheet(css_combined).rules:
-        for d in r.declarations:
-            properties.append(d.name)
-
-    properties = list(set(properties))
-    properties.sort()
-
-    output = { "css_combined" : css_combined, "properties" : properties, "css_urls_clean" : css_urls_clean , "css_urls_bad" : css_urls_bad }
+    output = { "css_combined" : css_combined, "css_urls_clean" : css_urls_clean , "css_urls_bad" : css_urls_bad }
     output = json.dumps(output)
 
     return output
