@@ -94,6 +94,18 @@ def application(environ, start_response):
     if not style_css:
         css_combined = css_combined + style_css
 
+    # remove comments - this will break a lot of hacks :-P
+    css_combined = re.sub( r'\s*/\*\s*\*/', "$$HACK1$$", css_combined ) # preserve IE<6 comment hack
+    css_combined = re.sub( r'/\*[\s\S]*?\*/', "", css_combined )
+    css_combined = css_combined.replace( "$$HACK1$$", '/**/' ) # preserve IE<6 comment hack
+
+    # spaces may be safely collapsed as generated content will collapse them anyway
+    css_combined = re.sub( r'\s+', ' ', css_combined )
+
+    # add semicolon if needed
+    css_combined = re.sub(r'([a-zA-Z0-9])\s*?}', r'\g<1>'+';}', css_combined )
+
+
     output = { "css_combined" : css_combined, "css_urls_clean" : css_urls_clean , "css_urls_bad" : css_urls_bad }
     output = json.dumps(output)
 

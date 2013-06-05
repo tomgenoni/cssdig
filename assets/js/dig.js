@@ -65,6 +65,7 @@ $(document).ready(function(){
             data: url,
             success: function(data, status){
                 cssString = data['css_combined']
+                console.log(cssString);
                 dig(cssString);
             }
         });
@@ -81,6 +82,7 @@ $(document).ready(function(){
         // Regex to find properties (tabs and colon included)
         var prop_regex = new RegExp( "\t[^.}](.*?):", 'g' );
         var prop_arr = css.match(prop_regex);
+
 
 
         // Clean up properties array, remove duplicates, and sort.

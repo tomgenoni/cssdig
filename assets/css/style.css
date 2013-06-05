@@ -71,12 +71,12 @@ html, body {
 }
 
 #report {
-    width: 50%;
+    width: 40%;
     padding-top: 40px;
 }
 
 #css {
-    width: 30%;
+    width: 40%;
     padding-top: 40px;
     background: #f9f9f9;
     color: #999;
@@ -119,6 +119,11 @@ code {
 
 pre {
     font-family: "Source Code Pro", monospace;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 .button {
