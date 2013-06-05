@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+    prop_on_arr = ["background","color"];
+
     function compressArray(original) {
 
         var compressed = [];
@@ -58,14 +60,16 @@ $(document).ready(function(){
     }
 
     $("#form-dig button").click(function(){
+        $(this).addClass("disabled");
         var url = $("#url").val();
+        $("#report").html("loading...")
         $.ajax({
             url: "/application/",
             type: 'post',
             data: url,
             success: function(data, status){
+                $("#form-dig button").removeClass("disabled");
                 cssString = data['css_combined']
-                console.log(cssString);
                 dig(cssString);
             }
         });
@@ -83,14 +87,13 @@ $(document).ready(function(){
         var prop_regex = new RegExp( "\t[^.}](.*?):", 'g' );
         var prop_arr = css.match(prop_regex);
 
-
-
         // Clean up properties array, remove duplicates, and sort.
         var prop_arr = removeTab(prop_arr)
         var prop_arr = removeColon(prop_arr)
         var properties = removeDupes(prop_arr);
         var properties = properties.sort();
 
+        prop_checkboxes = "";
         report_html = "<h2>Report</h2>";
 
         // Start search of CSS for matches to properties.
@@ -108,7 +111,13 @@ $(document).ready(function(){
             // Create json array with declarations and counts.
             var dec_json = compressArray(dec_match);
 
-            report_html += "<table class='report-entry' id='prop-" + p + "'>";
+            if ( $.inArray(p, prop_on_arr) > -1 ) {
+                prop_checkboxes += "<li><input type='checkbox' checked='checked'><label>" + p + "</label></li>"
+                report_html += "<table class='report-entry' id='prop-" + p + "'>";
+            } else {
+                prop_checkboxes += "<li><input type='checkbox'><label>" + p + "</label></li>"
+                report_html += "<table class='report-entry' id='prop-" + p + "' style='display:none'>";
+            }
 
             report_html += "<thead>";
             report_html += "<tr>";
@@ -134,9 +143,10 @@ $(document).ready(function(){
             report_html +="</table>";
         })
 
-        $("#report").html(report_html)
-        $("#css").prepend("<h2>Combined CSS</h2>")
-        $("#css pre").html(css)
+        $("#prop-checkboxes").html(prop_checkboxes);
+        $("#report").html(report_html);
+        $("#css").prepend("<h2>Combined CSS</h2>");
+        $("#css pre").html(css);
 
     }
 
