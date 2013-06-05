@@ -1,77 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script src="assets/js/cssjson.js"></script>
-<script>
-
-    $(document).ready(function(){
-
-        function countInArray(array, what) {
-            var count = 0;
-            for (var i = 0; i < array.length; i++) {
-                if (array[i] === what) {
-                    count++;
-                }
-            }
-            return count;
-        }
-
-        function unique(list) {
-            var result = [];
-            $.each(list, function(i, e) {
-                if ($.inArray(e, result) == -1) result.push(e);
-            });
-            return result;
-        }
-
-        var url = "http://stackoverflow.com/";
-
-        $.ajax({
-            url: "/application/",
-            type: 'post',
-            data: url,
-            success: function(data, status){
-
-                var css_combined = data['css_combined'];
-                var css_url_clean = data['css_url_clean'];
-                var css_url_bad = data['css_url_bad'];
-                var properties = data['properties'];
-
-                // property match (?:[a-z|-]*?(?=:\s*([^;>]*?)(?=[;">}])))
-
-                var important_len = (css_combined.match(/!important/g)).length;
-
-                var css_json = CSSJSON.toJSON(css_combined);
-                var css = CSSJSON.toCSS(css_json);
-
-                $.each(properties, function(index, value) {
-                    var re = new RegExp(value+':(.*?)(?=[;|}|)])', 'gi');
-                    declaration_arr = css_combined.match(re);
-                    var uniques_arr = unique(declaration_arr)
-
-                    $.each(uniques_arr, function(i,declaration) {
-                        count = countInArray(declaration_arr, declaration);
-                        console.log(declaration +" : "+count);
-                    });
-
-                });
-
-                $("#css").html(css)
-
-            }
-        });
-
-    })
-
-</script>
+  <meta charset="UTF-8">
+  <title>Document</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="assets/js/cssjson.js"></script>
+    <script src="assets/js/dig.js"></script>
 
 </head>
 <body>
-
-<pre id="css"></pre>
 
 </body>
 </html>
