@@ -21,7 +21,7 @@ os.makedirs(build_dir)
 #url = sys.argv[1]
 
 # Uncomment to debug
-url = "http://aol.com/"
+url = "http://atomeye.com/"
 
 prop_on_arr = [
     "background",
@@ -153,7 +153,7 @@ for p in properties:
         prop_checked = "checked='checked' "
         table_style_default = ""
 
-    checkbox_html += "<li><input type='checkbox' " + prop_checked + "id='checkbox-"+p+"' name='checkbox-"+p+"'><a href='#' class='show-prop' data-target='table-"+p+"'></a><label for='checkbox-"+p+"'>" + p + "</label></li>\n"
+    checkbox_html += "<li><input type='checkbox' " + prop_checked + "id='checkbox-"+p+"' name='checkbox-"+p+"'><label for='checkbox-"+p+"'>" + p + "</label></li>\n"
 
     report_html += "<table class='report-entry' id='table-" + p + "' "+ table_style_default +">\n";
     report_html += "<tr class='totals'>\n<td>"+p+"</td>" + "<td>" + str(len(values)) + "</td>\n</tr>\n"

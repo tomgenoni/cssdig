@@ -18,18 +18,26 @@ $(document).ready(function(){
     });
 
     $('.report-entry tr').click(function(){
-        $("#button-reset-css").show();
-        $('.report-entry tr').removeClass("active")
-        $(this).addClass("active");
-        // var target = $(this).attr("data-target");
-        // $("#css pre").unhighlight();
-        // $("#css pre").highlight(target);
-        // $(".ruleset").hide();
-        // setTimeout(function(){
-        //     $(".highlight").each(function(){
-        //         $(this).closest(".ruleset").show()
-        //     })
-        // },1)
+        if ( $(this).hasClass("active") ) {
+            $("#css pre").unhighlight();
+            $(this).removeClass("active");
+            $(".ruleset").show();
+        } else {
+            $('.report-entry tr').removeClass("active")
+            $(this).addClass("active");
+            var target = $(this).find("td").eq(0).text() || (this).find("color-example-wrap").text()
+            if ( target.charAt(target.length-1) != ";") {
+                target = target + ":";
+            }
+            $("#css pre").unhighlight();
+            $("#css pre").highlight(target);
+            $(".ruleset").hide();
+            setTimeout(function(){
+                $(".highlight").each(function(){
+                    $(this).closest(".ruleset").show()
+                })
+            },1)
+        }
         return false;
     });
 

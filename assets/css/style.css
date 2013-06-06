@@ -167,14 +167,6 @@ pre {
     color: #111;
 }
 
-#button-reset-css {
-    position: fixed;
-    top: 4px;
-    right: 15px;
-    display: none;
-    margin-left: 10px;
-}
-
 .error {
     background: #eab7b7;
     padding: 10px 20px;
@@ -219,7 +211,7 @@ textarea {
 
 
 .highlight {
-    background: lightblue;
+    background: #e4f2f8;
     padding: 0 1px;
     color: #000;
     border-radius: 2px;
@@ -227,16 +219,6 @@ textarea {
 
 #prop-checkboxes {
     margin: 15px 0;
-}
-
-#prop-checkboxes li .show-prop {
-    display: none;
-    float: right;
-    top: 3px;
-}
-
-#prop-checkboxes input[type="checkbox"]:checked + .show-prop  {
-    display: block;
 }
 
 /* Content */
@@ -294,7 +276,7 @@ textarea {
     cursor: pointer;
 }
 .report-entry tr.active td  {
-    background: lightblue;
+    background: #e4f2f8;
     cursor: pointer;
 }
 
@@ -356,34 +338,4 @@ textarea {
 .about p:first-child {
     font-size: 20px;
     margin-bottom: 30px;
-}
-
-/* Link Arrows */
-
-.show-prop {
-    width: 13px;
-    height: 13px;
-    position: relative;
-    display: inline-block;
-    opacity: .1;
-}
-
-.show-prop:after {
-    content: "";
-    position: absolute;
-    top: 3px;
-    right: 0;
-    width: 0;
-    height: 0;
-    border-top: 4px solid transparent;
-    border-bottom: 4px solid transparent;
-    border-left: 6px solid #000;
-}
-
-#prop-checkboxes li:hover .show-prop {
-    opacity: 1;
-}
-
-#prop-checkboxes li:hover .show-prop:after {
-    border-left-color: #08c;
 }
