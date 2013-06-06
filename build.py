@@ -130,7 +130,7 @@ css_combined = re.sub(r'([a-zA-Z0-9])\s*?}', r'\g<1>'+';}', css_combined )
 # Find all instances of !important.
 important_values = re.findall("!important", css_combined)
 report_html = "<table class='report-entry'>\n"
-report_html += "<tr class='totals'>\n<td>!important</td>" + "<td>" + str(len(important_values)) + "</td>\n</tr>\n"
+report_html += "<tr class='totals'>\n<td>!important</td>" + "<td>" + str(len(important_values)) + "<a href='#' class='show-prop' data-target='!important'></a></td>\n</tr>\n"
 report_html += "</table>\n"
 
 parser = tinycss.make_parser()
@@ -159,18 +159,18 @@ for p in properties:
         prop_checked = "checked='checked' "
         table_style_default = ""
 
-    checkbox_html += "<li><input type='checkbox' " + prop_checked + "id='checkbox-"+p+"' name='checkbox-"+p+"'><label for='checkbox-"+p+"'>" + p + "</label></li>\n"
+    checkbox_html += "<li><input type='checkbox' " + prop_checked + "id='checkbox-"+p+"' name='checkbox-"+p+"'><a href='#' class='show-prop' data-target='table-"+p+"'></a><label for='checkbox-"+p+"'>" + p + "</label></li>\n"
 
     report_html += "<table class='report-entry' id='table-" + p + "' "+ table_style_default +">\n";
-    report_html += "<tr class='totals'>\n<td>"+p+"</td>" + "<td>" + str(len(values)) + "</td>\n</tr>\n"
+    report_html += "<tr class='totals'>\n<td>"+p+"</td>" + "<td>" + str(len(values)) + "<a href='#' class='show-prop' data-target='"+p+":'></a></td>\n</tr>\n"
 
     for key, value in sorted(cnt.iteritems(), key=lambda (k,v): (k,v)):
         color_example = ""
         key = key.lstrip()
         if p == "color" or p == "background":
-            report_html += "<tr>\n<td><div class='color-example-wrap'><span class='color-example' style='background:"+key+"'></span>" + p +": " + "%s;</div></td><td>%s</td>\n</tr>\n" % (key, value)
+            report_html += "<tr>\n<td><div class='color-example-wrap'><span class='color-example' style='background:"+key+"'></span>" + p +": " + "%s;</div></td><td>%s<a href='#' class='show-prop'></a></td>\n</tr>\n" % (key, value)
         else:
-            report_html += "<tr>\n<td>" + p +": " + "%s;</td><td>%s</td>\n</tr>\n" % (key, value)
+            report_html += "<tr>\n<td>" + p +": " + "%s;</td><td>%s<a href='#' class='show-prop'></a></td>\n</tr>\n" % (key, value)
     report_html += "</table>\n"
 
 

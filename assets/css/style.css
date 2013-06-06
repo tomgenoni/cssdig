@@ -143,41 +143,36 @@ pre {
 }
 
 .button {
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
     cursor: pointer;
     display: inline-block;
     font-family: Helvetica, sans;
-    color: #fff;
-    padding: 4px 8px;
-    border-radius: 3px;
-    font-size: 13px;
+    color: #08c;
+    background: none;
+    padding: 1px 2px;
+    font-size: 11px;
     line-height: 1;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
     white-space: nowrap;
     margin: 0;
-    font-weight: 600;
-    min-width: 60px;
-    border: 1px solid rgba(0, 0, 0, .3);
-    text-shadow: 0 -1px 0px rgba(0, 0, 0, .3);
-    box-shadow: inset 0 1px 0px rgba(255, 255, 255, .2);
-    background: #08c;
+    font-weight: 700;
+    border: none;
 }
 
 .button:hover,
 .button:active {
-    background: #0074ae;
+    color: #333;
 }
 
 .button:active {
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, .25);
+    color: #111;
 }
 
-.button.disabled {
-    opacity: .5;
-    cursor: default;
+#button-reset-css {
+    position: fixed;
+    top: 4px;
+    right: 15px;
+    display: none;
+    margin-left: 10px;
 }
-
 
 .error {
     background: #eab7b7;
@@ -222,8 +217,25 @@ textarea {
 }
 
 
+.highlight {
+    background: lightblue;
+    padding: 0 1px;
+    color: #000;
+    border-radius: 2px;
+}
+
 #prop-checkboxes {
     margin: 15px 0;
+}
+
+#prop-checkboxes li .show-prop {
+    display: none;
+    float: right;
+    top: 3px;
+}
+
+#prop-checkboxes input[type="checkbox"]:checked + .show-prop  {
+    display: block;
 }
 
 /* Content */
@@ -336,4 +348,36 @@ textarea {
 .about p:first-child {
     font-size: 20px;
     margin-bottom: 30px;
+}
+
+/* Link Arrows */
+
+.show-prop {
+    width: 13px;
+    height: 13px;
+    position: relative;
+    display: inline-block;
+    opacity: .1;
+}
+
+.show-prop:after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 6px solid #000;
+}
+
+#prop-checkboxes li:hover .show-prop,
+.report-entry tr:hover .show-prop  {
+    opacity: 1;
+}
+
+#prop-checkboxes li:hover .show-prop:after,
+.report-entry tr:hover .show-prop:after  {
+    border-left-color: #08c;
 }
