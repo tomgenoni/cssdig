@@ -1,4 +1,4 @@
-import os, re, urllib2, time, datetime, operator, sys, gzip, tinycss, shutil
+import os, re, urllib2, time, datetime, operator, sys, gzip, shutil
 from urlparse import urlparse, urljoin, urlunparse
 from collections import OrderedDict
 from collections import Counter
@@ -21,7 +21,7 @@ os.makedirs(build_dir)
 #url = sys.argv[1]
 
 # Uncomment to debug
-url = "http://msn.com/"
+url = "http://aol.com/"
 
 prop_on_arr = [
     "background",
@@ -133,15 +133,9 @@ report_html = "<table class='report-entry'>\n"
 report_html += "<tr class='totals'>\n<td>!important</td>" + "<td>" + str(len(important_values)) + "</td>\n</tr>\n"
 report_html += "</table>\n"
 
-parser = tinycss.make_parser()
-stylesheet = parser.parse_stylesheet(css_combined)
-
-properties = []
-
-for r in stylesheet.rules:
-    for d in r.declarations:
-        properties.append(d.name)
-
+# Find all properties in the combined CSS.
+prop_regex = "[{|;]([A-Za-z0-9_-]*)\s*:"
+properties = re.findall(prop_regex, css_combined)
 properties = list(set(properties))
 properties.sort()
 

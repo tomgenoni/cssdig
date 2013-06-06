@@ -1,0 +1,2 @@
+body { background: red;}
+@media print{form,object{display:none}}
