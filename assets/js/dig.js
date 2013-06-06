@@ -29,7 +29,6 @@ $(document).ready(function(){
             success: function(data, status){
                 $("#form-dig button").removeClass("disabled");
                 cssString = data['css_combined'];
-                console.log(cssString);
                 dig(cssString);
             }
         });
@@ -85,7 +84,7 @@ $(document).ready(function(){
     function removeColon(arr) {
         clean_arr = []
         $.each(arr, function(i,d){
-            d = d.replace(/:/g, '');
+            d = d.replace(/: /g, '');
             clean_arr.push(d)
         })
         return clean_arr;
@@ -107,7 +106,7 @@ $(document).ready(function(){
         var css = CSSJSON.toCSS(json);
 
         // Regex to find properties (tabs and colon included)
-        var prop_regex = new RegExp( "\t[^.}](.*?):", 'g' );
+        var prop_regex = new RegExp( "\t[^.}](.*?):\\s", 'g' );
         var prop_arr = css.match(prop_regex);
 
         // Clean up properties array, remove duplicates, and sort.

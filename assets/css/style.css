@@ -73,7 +73,7 @@ html, body {
 
 #report {
     width: 46%;
-    padding-top: 40px;
+    padding-top: 20px;
     border-right: 1px dashed #eee;
 }
 
@@ -176,7 +176,7 @@ pre {
 
 .button.disabled {
     opacity: .5;
-    cursor: pointer;
+    cursor: default;
 }
 
 
