@@ -1,6 +1,27 @@
 $(document).ready(function(){
 
-    prop_on_arr = ["background","color"];
+    prop_on_arr = [
+        "background",
+        "border",
+        "color",
+        "content",
+        "display",
+        "font",
+        "font-family",
+        "font-size",
+        "font-style",
+        "font-weight",
+        "height",
+        "line-height",
+        "width",
+        "z-index"
+    ];
+
+    $('body').on('click', 'input[type=checkbox]', function (){
+        var trigger = $(this).attr("id");
+        var target = trigger.replace("checkbox-","table-");
+        $("#"+target).toggle();
+    });
 
     function compressArray(original) {
 
@@ -111,14 +132,17 @@ $(document).ready(function(){
             // Create json array with declarations and counts.
             var dec_json = compressArray(dec_match);
 
+            prop_checked = ""
+            table_style_default = "style='display:none'"
+
             if ( $.inArray(p, prop_on_arr) > -1 ) {
-                prop_checkboxes += "<li><input type='checkbox' checked='checked'><label>" + p + "</label></li>"
-                report_html += "<table class='report-entry' id='prop-" + p + "'>";
-            } else {
-                prop_checkboxes += "<li><input type='checkbox'><label>" + p + "</label></li>"
-                report_html += "<table class='report-entry' id='prop-" + p + "' style='display:none'>";
+                prop_checked = "checked='checked'"
+                table_style_default = "";
             }
 
+            prop_checkboxes += "<li><input type='checkbox' " + prop_checked + " id='checkbox-"+p+"' name='checkbox-"+p+"'><label for='checkbox-"+p+"'>" + p + "</label></li>"
+
+            report_html += "<table class='report-entry' id='table-" + p + "' "+ table_style_default +">";
             report_html += "<thead>";
             report_html += "<tr>";
             report_html += "<td>" + p + "</td>";
