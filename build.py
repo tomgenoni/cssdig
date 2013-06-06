@@ -1,4 +1,4 @@
-import os, re, urllib2, time, datetime, operator, sys, gzip, tinycss
+import os, re, urllib2, time, datetime, operator, sys, gzip, tinycss, shutil
 from urlparse import urlparse, urljoin, urlunparse
 from collections import OrderedDict
 from collections import Counter
@@ -7,11 +7,21 @@ from cStringIO import StringIO
 
 start_time = time.time()
 
+# Build defaults.
+build_dir = "docs"
+build_file = build_dir + "/index.html"
+layout_tmpl = 'template/index.tmpl'
+
+# Remove the build dir and make it again.
+if os.path.isdir(build_dir):
+    shutil.rmtree(build_dir)
+os.makedirs(build_dir)
+
 #Get URL and properties from PHP
 #url = sys.argv[1]
 
 # Uncomment to debug
-url = "http://www.atomeye.com/"
+url = "http://www.aol.com/"
 
 prop_on_arr = [
     "background",
@@ -48,7 +58,7 @@ css_urls_all = []
 css_urls_clean = []
 css_urls_bad = []
 css_combined = ""
-prop_checkboxes = ""
+checkbox_html = ""
 
 def getRemoteURL(url):
     req = urllib2.Request(url, headers={'User-Agent' : "Magic Browser"})
@@ -105,9 +115,21 @@ style_css = ''.join([s.get_text() for s in soup.find_all('style')])
 if not style_css:
     css_combined = css_combined + style_css
 
+# remove comments - this will break a lot of hacks :-P
+css_combined = re.sub( r'\s*/\*\s*\*/', "$$HACK1$$", css_combined ) # preserve IE<6 comment hack
+css_combined = re.sub( r'/\*[\s\S]*?\*/', "", css_combined )
+css_combined = css_combined.replace( "$$HACK1$$", '/**/' ) # preserve IE<6 comment hack
+
+# spaces may be safely collapsed as generated content will collapse them anyway
+css_combined = re.sub( r'\s+', ' ', css_combined )
+
+# add semicolon if needed
+css_combined = re.sub(r'([a-zA-Z0-9])\s*?}', r'\g<1>'+';}', css_combined )
+
+
 # Find all instances of !important.
 important_values = re.findall("!important", css_combined)
-report_html = "<table>\n"
+report_html = "<table class='report-entry'>\n"
 report_html += "<tr class='totals'>\n<td>!important</td>" + "<td>" + str(len(important_values)) + "</td>\n</tr>\n"
 report_html += "</table>\n"
 
@@ -137,7 +159,7 @@ for p in properties:
         prop_checked = "checked='checked' "
         table_style_default = ""
 
-    prop_checkboxes += "<li><input type='checkbox' " + prop_checked + "id='checkbox-"+p+"' name='checkbox-"+p+"'><label for='checkbox-"+p+"'>" + p + "</label></li>\n"
+    checkbox_html += "<li><input type='checkbox' " + prop_checked + "id='checkbox-"+p+"' name='checkbox-"+p+"'><label for='checkbox-"+p+"'>" + p + "</label></li>\n"
 
     report_html += "<table class='report-entry' id='table-" + p + "' "+ table_style_default +">\n";
     report_html += "<tr class='totals'>\n<td>"+p+"</td>" + "<td>" + str(len(values)) + "</td>\n</tr>\n"
@@ -167,12 +189,22 @@ time_elapsed = time.time() - start_time
 time_elapsed = str(round(time_elapsed,1))
 
 # Start collecting the HTML.
-header_html = "<table class='stats'>\n"
-header_html += "<tr><td>URL Dug</td><td><a href='"+url+"'/>"+url+"</a></td></tr>\n"
-header_html += "<tr><td>CSS Dug</td><td><ul>" + css_urls_list_good + "</ul></td></tr>\n"
+header_html = "<div class='stats'>\n"
+header_html += "<h3>URL Dug</h3><p><a href='"+url+"'/>"+url+"</a></p>\n"
+header_html += "<h3>CSS Dug</h3><ul>" + css_urls_list_good + "</ul>\n"
 if css_urls_bad:
-    header_html += "<tr><td>Skipped</td><td><ul class='unparsed'>" + css_urls_list_bad + "</ul></td></tr>\n"
-header_html += "<tr><td>Dug</td><td>"+timestamp+" taking "+time_elapsed+" seconds</td></tr>\n"
-header_html += "</table>\n"
+    header_html += "<h3>Skipped</h3><ul class='unparsed'>" + css_urls_list_bad + "</ul>\n"
+header_html += "<h3>Dug</h3><p>"+timestamp+" taking "+time_elapsed+" seconds</p>\n"
+header_html += "</div>\n"
 
-print header_html + report_html
+layout_tmpl_html = open(layout_tmpl).read()
+final_html_output = layout_tmpl_html\
+    .replace("{{ checkbox_html }}", checkbox_html)\
+    .replace("{{ css_combined }}", css_combined)\
+    .replace("{{ report_html }}", header_html + report_html);
+
+tf = open(build_file, 'a')
+tf.write(final_html_output)
+tf.close()
+
+shutil.copytree('assets/', build_dir+"/assets/")

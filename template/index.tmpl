@@ -14,11 +14,15 @@
     <div id="wrap">
         <div id="nav">
             <h1>CSS Dig</h1>
-            <ul id="prop-checkboxes">{{ ckeckbox-html }}</ul>
+            <ul id="prop-checkboxes">{{ checkbox_html }}</ul>
         </div>
-        <div id="report">{{ report_html }}</div>
+        <div id="report">
+            <h2>Dig Report</h2>
+            {{ report_html }}
+        </div>
         <div id="css">
-            <pre>{{ css }}</pre>
+            <h2>Combined CSS</h2>
+            <pre>{{ css_combined }}</pre>
         </div>
     </div>
 </body>
