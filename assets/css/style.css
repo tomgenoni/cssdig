@@ -68,7 +68,6 @@ html, body {
 #nav {
     width: 20%;
     background: #f9f9f9;
-    border-right: 1px dashed #eee;
 }
 
 #report {
@@ -79,6 +78,8 @@ html, body {
 #css {
     width: 34%;
     color: #999;
+    background: #f9f9f9;
+    border-left: 1px dashed #eee;
 }
 
 a {

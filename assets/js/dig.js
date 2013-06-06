@@ -8,7 +8,7 @@ $(document).ready(function(){
         target_top = $("#"+target).offset().top;
         if ( $(this).attr("checked") == "checked") {
             $('#report').animate({
-                 scrollTop: target_top + report_top - 25
+                 scrollTop: target_top + report_top - 28
             }, 500);
         }
     });
