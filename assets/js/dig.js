@@ -17,17 +17,19 @@ $(document).ready(function(){
         return false;
     });
 
-    $('.report-entry .show-prop').click(function(){
+    $('.report-entry tr').click(function(){
         $("#button-reset-css").show();
-        var target = $(this).attr("data-target");
-        $("#css pre").unhighlight();
-        $("#css pre").highlight(target);
-        $(".ruleset").hide();
-        setTimeout(function(){
-            $(".highlight").each(function(){
-                $(this).closest(".ruleset").show()
-            })
-        },1)
+        $('.report-entry tr').removeClass("active")
+        $(this).addClass("active");
+        // var target = $(this).attr("data-target");
+        // $("#css pre").unhighlight();
+        // $("#css pre").highlight(target);
+        // $(".ruleset").hide();
+        // setTimeout(function(){
+        //     $(".highlight").each(function(){
+        //         $(this).closest(".ruleset").show()
+        //     })
+        // },1)
         return false;
     });
 

@@ -72,14 +72,15 @@ html, body {
 
 #report {
     width: 46%;
-    border-right: 1px dashed #eee;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .1);
+    position: relative;
+    z-index: 1;
 }
 
 #css {
     width: 34%;
     color: #999;
     background: #f9f9f9;
-    border-left: 1px dashed #eee;
 }
 
 a {
@@ -284,8 +285,17 @@ textarea {
 }
 
 .report-entry tr td  {
-    padding: 4px 4px;
+    padding: 4px 8px;
     vertical-align: top;
+}
+
+.report-entry tr:hover td  {
+    background: #eee;
+    cursor: pointer;
+}
+.report-entry tr.active td  {
+    background: lightblue;
+    cursor: pointer;
 }
 
 .report-entry tr:first-child td  {
@@ -297,8 +307,6 @@ textarea {
 
 .report-entry tbody tr td  {
     border-top: 1px solid #f5f5f5;
-    padding: 4px 4px;
-    vertical-align: top;
 }
 
 .report-entry tr td:first-child {
@@ -372,12 +380,10 @@ textarea {
     border-left: 6px solid #000;
 }
 
-#prop-checkboxes li:hover .show-prop,
-.report-entry tr:hover .show-prop  {
+#prop-checkboxes li:hover .show-prop {
     opacity: 1;
 }
 
-#prop-checkboxes li:hover .show-prop:after,
-.report-entry tr:hover .show-prop:after  {
+#prop-checkboxes li:hover .show-prop:after {
     border-left-color: #08c;
 }
