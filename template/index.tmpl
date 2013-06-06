@@ -14,15 +14,11 @@
     <div id="wrap">
         <div id="nav">
             <h1>CSS Dig</h1>
-            <form id="form-dig">
-                <input type="text" name="url" id="url" placeholder="Enter URL" />
-                <button class="button">Dig</button>
-            </form>
-            <ul id="prop-checkboxes"></ul>
+            <ul id="prop-checkboxes">{{ ckeckbox-html }}</ul>
         </div>
-        <div id="report"></div>
+        <div id="report">{{ report_html }}</div>
         <div id="css">
-            <pre></pre>
+            <pre>{{ css }}</pre>
         </div>
     </div>
 </body>

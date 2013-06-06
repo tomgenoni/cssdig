@@ -1,4 +1,4 @@
-import os, re, urllib2, time, datetime, operator, sys, gzip, tinyurl
+import os, re, urllib2, time, datetime, operator, sys, gzip, tinycss
 from urlparse import urlparse, urljoin, urlunparse
 from collections import OrderedDict
 from collections import Counter
@@ -8,20 +8,27 @@ from cStringIO import StringIO
 start_time = time.time()
 
 #Get URL and properties from PHP
-url = sys.argv[1]
-properties = sys.argv[2].split(",")
-extra_properties = sys.argv[3]
-
-if extra_properties:
-    extra_properties = extra_properties.split(",")
-    properties = properties + extra_properties
-    # Remove any duplicates.
-    properties = list(set(properties))
-    properties.sort()
+#url = sys.argv[1]
 
 # Uncomment to debug
-# url = "http://www.huffingtonpost.com/"
-# properties = ['background']
+url = "http://www.atomeye.com/"
+
+prop_on_arr = [
+    "background",
+    "border",
+    "color",
+    "content",
+    "display",
+    "font",
+    "font-family",
+    "font-size",
+    "font-style",
+    "font-weight",
+    "height",
+    "line-height",
+    "width",
+    "z-index"
+];
 
 # Domains that can't or shouldn't be included.
 domain_blacklist = [
@@ -41,6 +48,7 @@ css_urls_all = []
 css_urls_clean = []
 css_urls_bad = []
 css_combined = ""
+prop_checkboxes = ""
 
 def getRemoteURL(url):
     req = urllib2.Request(url, headers={'User-Agent' : "Magic Browser"})
@@ -99,11 +107,21 @@ if not style_css:
 
 # Find all instances of !important.
 important_values = re.findall("!important", css_combined)
-html = "<div class='table-wrap'>\n"
-html += "<table>\n"
-html += "<tr class='totals'>\n<td>!important</td>" + "<td>" + str(len(important_values)) + "</td>\n</tr>\n"
-html += "</table>\n"
-html += "</div>\n"
+report_html = "<table>\n"
+report_html += "<tr class='totals'>\n<td>!important</td>" + "<td>" + str(len(important_values)) + "</td>\n</tr>\n"
+report_html += "</table>\n"
+
+parser = tinycss.make_parser()
+stylesheet = parser.parse_stylesheet(css_combined)
+
+properties = []
+
+for r in stylesheet.rules:
+    for d in r.declarations:
+        properties.append(d.name)
+
+properties = list(set(properties))
+properties.sort()
 
 # Run through all the properties.
 for p in properties:
@@ -112,19 +130,26 @@ for p in properties:
     values.sort()
     cnt = Counter(values)
 
-    html += "<div class='table-wrap'>\n"
-    html += "<table>\n"
-    html += "<tr class='totals'>\n<td>"+p+"</td>" + "<td>" + str(len(values)) + "</td>\n</tr>\n"
+    prop_checked = ""
+    table_style_default ="style='display:none'"
+
+    if p in prop_on_arr:
+        prop_checked = "checked='checked' "
+        table_style_default = ""
+
+    prop_checkboxes += "<li><input type='checkbox' " + prop_checked + "id='checkbox-"+p+"' name='checkbox-"+p+"'><label for='checkbox-"+p+"'>" + p + "</label></li>\n"
+
+    report_html += "<table class='report-entry' id='table-" + p + "' "+ table_style_default +">\n";
+    report_html += "<tr class='totals'>\n<td>"+p+"</td>" + "<td>" + str(len(values)) + "</td>\n</tr>\n"
 
     for key, value in sorted(cnt.iteritems(), key=lambda (k,v): (k,v)):
         color_example = ""
         key = key.lstrip()
         if p == "color" or p == "background":
-            html += "<tr>\n<td><div class='color-example-wrap'><span class='color-example' style='background:"+key+"'></span>" + p +": " + "%s;</div></td><td>%s</td>\n</tr>\n" % (key, value)
+            report_html += "<tr>\n<td><div class='color-example-wrap'><span class='color-example' style='background:"+key+"'></span>" + p +": " + "%s;</div></td><td>%s</td>\n</tr>\n" % (key, value)
         else:
-            html += "<tr>\n<td>" + p +": " + "%s;</td><td>%s</td>\n</tr>\n" % (key, value)
-    html += "</table>\n"
-    html += "</div>\n"
+            report_html += "<tr>\n<td>" + p +": " + "%s;</td><td>%s</td>\n</tr>\n" % (key, value)
+    report_html += "</table>\n"
 
 
 # CSS found in <style> blocks.
@@ -133,31 +158,21 @@ style_css = ''.join([s.get_text() for s in soup.find_all('style')])
 # HTML for parsed CSS files.
 css_urls_list_good = ''.join(["<li><a href='"+u+"'>" + u + "</a></li>" for u in css_urls_clean])
 
-report_url = "http://cssdig.com/?url=" + url
-for p in properties:
-    report_url += "&p[]=" + p
-
 # HTML for unreachable CSS files.
 if css_urls_bad:
     css_urls_list_bad = ''.join(["<li><a href='"+b+"'>" + b + "</a></li>" for b in css_urls_bad])
-
-# report_url = urllib2.quote(report_url.encode("utf8"))
-report_tinyurl = tinyurl.create_one(report_url)
 
 # Time elapsed
 time_elapsed = time.time() - start_time
 time_elapsed = str(round(time_elapsed,1))
 
 # Start collecting the HTML.
-header = "<div class='stats'>\n"
-header += "<table>\n"
-header += "<tr><td>URL Dug</td><td><a href='"+url+"'/>"+url+"</a></td></tr>\n"
-header += "<tr><td>CSS Dug</td><td><ul>" + css_urls_list_good + "</ul></td></tr>\n"
+header_html = "<table class='stats'>\n"
+header_html += "<tr><td>URL Dug</td><td><a href='"+url+"'/>"+url+"</a></td></tr>\n"
+header_html += "<tr><td>CSS Dug</td><td><ul>" + css_urls_list_good + "</ul></td></tr>\n"
 if css_urls_bad:
-    header += "<tr><td>Skipped</td><td><ul class='unparsed'>" + css_urls_list_bad + "</ul></td></tr>\n"
-header += "<tr><td>This Dig</td><td><a href='"+report_tinyurl+"'/>"+report_tinyurl+"</a></td></tr>\n"
-header += "<tr><td>Dug</td><td>"+timestamp+" taking "+time_elapsed+" seconds</td></tr>\n"
-header += "</table>\n"
-header += "</div>\n"
+    header_html += "<tr><td>Skipped</td><td><ul class='unparsed'>" + css_urls_list_bad + "</ul></td></tr>\n"
+header_html += "<tr><td>Dug</td><td>"+timestamp+" taking "+time_elapsed+" seconds</td></tr>\n"
+header_html += "</table>\n"
 
-print header + html
+print header_html + report_html
