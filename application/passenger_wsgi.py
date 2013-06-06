@@ -7,6 +7,7 @@ import os, re, urllib2, time, datetime, operator, sys, gzip, json
 from urlparse import urlparse, urljoin, urlunparse
 from bs4 import BeautifulSoup
 from cStringIO import StringIO
+from lxml import etree
 
 def application(environ, start_response):
     start_response('200 OK', [ ('Content-type', 'application/json; charset=utf-8') ])
@@ -49,7 +50,7 @@ def application(environ, start_response):
         else:
             return doc.read()
 
-    soup = BeautifulSoup(getRemoteURL(url))
+    soup = BeautifulSoup(getRemoteURL(url), "lxml")
 
     # Find all <link> elements.
     for link in soup.find_all('link'):

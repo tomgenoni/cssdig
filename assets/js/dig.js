@@ -17,6 +17,25 @@ $(document).ready(function(){
         "z-index"
     ];
 
+    $("#form-dig button").click(function(){
+        $(this).addClass("disabled");
+        var url = $("#url").val();
+        $("#css, #prop-checkboxes").html("");
+        $("#report").html("loading...")
+        $.ajax({
+            url: "/application/",
+            type: 'post',
+            data: url,
+            success: function(data, status){
+                $("#form-dig button").removeClass("disabled");
+                cssString = data['css_combined'];
+                console.log(cssString);
+                dig(cssString);
+            }
+        });
+        return false;
+    })
+
     $('body').on('click', 'input[type=checkbox]', function (){
         var trigger = $(this).attr("id");
         var target = trigger.replace("checkbox-","table-");
@@ -80,23 +99,6 @@ $(document).ready(function(){
         return unique_arr
     }
 
-    $("#form-dig button").click(function(){
-        $(this).addClass("disabled");
-        var url = $("#url").val();
-        $("#report").html("loading...")
-        $.ajax({
-            url: "/application/",
-            type: 'post',
-            data: url,
-            success: function(data, status){
-                $("#form-dig button").removeClass("disabled");
-                cssString = data['css_combined']
-                dig(cssString);
-            }
-        });
-        return false;
-    })
-
 
     function dig(cssStrig) {
 
@@ -115,7 +117,7 @@ $(document).ready(function(){
         var properties = properties.sort();
 
         prop_checkboxes = "";
-        report_html = "<h2>Report</h2>";
+        report_html = "<h2>Dig Report</h2>";
 
         // Start search of CSS for matches to properties.
         $.each(properties, function(i,p){
@@ -169,8 +171,7 @@ $(document).ready(function(){
 
         $("#prop-checkboxes").html(prop_checkboxes);
         $("#report").html(report_html);
-        $("#css").prepend("<h2>Combined CSS</h2>");
-        $("#css pre").html(css);
+        $("#css").html("<h2>Combined CSS</h2><pre>" + css + "</pre>");
 
     }
 

@@ -232,10 +232,7 @@ textarea {
 .report-entry {
     width: 100%;
     border-collapse: collapse;
-    margin: 0 0 40px;
-}
-.report-entry:last-child {
-    margin: 0 0 20px;
+    margin: 20px 0;
 }
 
 .report-entry tr td  {
