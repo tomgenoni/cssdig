@@ -8,7 +8,7 @@ from cStringIO import StringIO
 start_time = time.time()
 
 # Build defaults.
-build_dir = "docs"
+build_dir = "report"
 build_file = build_dir + "/index.html"
 layout_tmpl = 'template/index.tmpl'
 
@@ -21,7 +21,7 @@ os.makedirs(build_dir)
 #url = sys.argv[1]
 
 # Uncomment to debug
-url = "http://www.aol.com/"
+url = "http://atomeye.com"
 
 prop_on_arr = [
     "background",

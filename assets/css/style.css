@@ -275,10 +275,11 @@ textarea {
     vertical-align: top;
 }
 
-
-.report-entry thead tr td  {
+.report-entry tr:first-child td  {
     font-weight: 700;
     font-size: 13px;
+    padding-top: 0;
+    border-top: none;
 }
 
 .report-entry tbody tr td  {

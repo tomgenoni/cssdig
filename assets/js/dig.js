@@ -1,9 +1,16 @@
 $(document).ready(function(){
 
-    $('body').on('click', 'input[type=checkbox]', function (){
+    $('input[type=checkbox]').click(function(){
         var trigger = $(this).attr("id");
         var target = trigger.replace("checkbox-","table-");
         $("#"+target).toggle();
+        report_top = $("#report").scrollTop();
+        target_top = $("#"+target).offset().top;
+        if ( $(this).attr("checked") == "checked") {
+            $('#report').animate({
+                 scrollTop: target_top + report_top - 25
+            }, 500);
+        }
     });
 
     var css_dirty = $("#css pre").html()
