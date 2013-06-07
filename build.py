@@ -18,10 +18,10 @@ if os.path.isdir(build_dir):
 os.makedirs(build_dir)
 
 #Get URL and properties from PHP
-#url = sys.argv[1]
+url = sys.argv[1]
 
 # Uncomment to debug
-url = "http://atomeye.com/"
+#url = "http://inkling.com/"
 
 prop_on_arr = [
     "background",
@@ -44,7 +44,7 @@ prop_on_arr = [
 domain_blacklist = [
     'use.typekit.com',
     'fonts.googleapis.com',
-    'cloud.webtype.com'
+    'cloud.webtype.com',
 ]
 
 # Get timestamp.
@@ -115,17 +115,21 @@ style_css = ''.join([s.get_text() for s in soup.find_all('style')])
 if not style_css:
     css_combined = css_combined + style_css
 
-# remove comments - this will break a lot of hacks :-P
-css_combined = re.sub( r'\s*/\*\s*\*/', "$$HACK1$$", css_combined ) # preserve IE<6 comment hack
-css_combined = re.sub( r'/\*[\s\S]*?\*/', "", css_combined )
-css_combined = css_combined.replace( "$$HACK1$$", '/**/' ) # preserve IE<6 comment hack
-
 # spaces may be safely collapsed as generated content will collapse them anyway
-css_combined = re.sub( r'\s+', ' ', css_combined )
+css_combined = re.sub(r'\s+', ' ', css_combined )
 
 # add semicolon if needed
 css_combined = re.sub(r'([a-zA-Z0-9])\s*?}', r'\g<1>'+';}', css_combined )
-
+# new line after opening bracket
+css_combined = re.sub(r'({)', r' '+'\g<1>'+'\n', css_combined )
+# new line after semicolon
+css_combined = re.sub(r'(;)', r'\g<1>'+'\n', css_combined )
+# tab in plus one space in declarations
+css_combined = re.sub(r'(.*;)', r'\t '+'\g<1>', css_combined )
+# new line after closing bracket
+css_combined = re.sub(r'(})', r'\g<1>'+'\n', css_combined )
+# add space after colon if needed
+css_combined = re.sub(r'(\t.*?):(\S)', r'\g<1>'+': '+'\g<2>', css_combined )
 
 # Find all instances of !important.
 important_values = re.findall("!important", css_combined)
@@ -134,7 +138,7 @@ report_html += "<tr class='totals'>\n<td>!important</td>" + "<td>" + str(len(imp
 report_html += "</table>\n"
 
 # Find all properties in the combined CSS.
-prop_regex = "[{|;]([A-Za-z0-9_-]*)\s*:"
+prop_regex = "[{|;]\s*([a-zA-Z0-9-]*)\s*:"
 properties = re.findall(prop_regex, css_combined)
 properties = list(set(properties))
 properties.sort()

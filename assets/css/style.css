@@ -225,6 +225,9 @@ textarea {
 
 .stats {
     width: 100%;
+    padding: 0 8px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .stats h3 {

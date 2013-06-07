@@ -48,11 +48,9 @@ $(document).ready(function(){
         return false;
     });
 
-    var css_dirty = $("#css pre").html()
-    var css_json = CSSJSON.toJSON(css_dirty);
-    var css_clean = CSSJSON.toCSS(css_json);
-    css_clean = css_clean.replace(/\}/g,"}</span><span class='ruleset'>")
-    css_clean = css_clean.substring(0, css_clean.length - 7);
-    $("#css pre").html("<span class='ruleset'>" + css_clean)
+    var css_pure = $("#css pre").html()
+    css_pure = css_pure.replace(/\}/g,"}</span><span class='ruleset'>")
+    css_pure = css_pure.substring(0, css_pure.length - 7);
+    $("#css pre").html("<span class='ruleset'>" + css_pure)
 
 })
