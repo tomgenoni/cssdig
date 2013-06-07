@@ -124,7 +124,8 @@ css_combined = re.sub(r'([a-zA-Z0-9])\s*?}', r'\g<1>'+';}', css_combined )
 css_combined = re.sub(r'({)', r' '+'\g<1>'+'\n', css_combined )
 # new line after semicolon
 css_combined = re.sub(r'(;)', r'\g<1>'+'\n', css_combined )
-# tab in plus one space in declarations
+# tab in plus one space in declarations so the highlighter js
+# can distinguish between height and min-height
 css_combined = re.sub(r'(.*;)', r'\t '+'\g<1>', css_combined )
 # new line after closing bracket
 css_combined = re.sub(r'(})', r'\g<1>'+'\n', css_combined )
