@@ -17,11 +17,15 @@ $(document).ready(function(){
             $('.report-entry tr').removeClass("active")
             $(this).addClass("active");
             var target = $(this).find("td").eq(0).text() || (this).find("color-example-wrap").text()
-            if ( target.charAt(target.length-1) != ";") {
+            if ( target.charAt(target.length-1) != ";" && target != "!important") {
                 target = target + ":";
             }
             $("#css pre").unhighlight();
-            $("#css pre").highlight(" " + target, { caseSensitive: true });
+            if ( target == "!important" ) {
+                $("#css pre").highlight(target, { caseSensitive: true });
+            } else {
+                $("#css pre").highlight(" " + target, { caseSensitive: true });
+            }
             $(".ruleset").hide();
             setTimeout(function(){
                 $(".highlight").each(function(){

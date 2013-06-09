@@ -47,6 +47,7 @@ table {
 html, body {
     height: 100%;
     overflow: hidden;
+    color: #000;
 }
 
 #wrap {
@@ -69,13 +70,13 @@ html, body {
 }
 
 .report {
-    width: 46%;
+    width: 43%;
     border-left: 1px dashed #eee;
     border-right: 1px dashed #eee;
 }
 
 .css {
-    width: 34%;
+    width: 37%;
     color: #999;
 }
 
@@ -89,11 +90,13 @@ html, body {
     background: #eee;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    font-family: Helvetica, sans;
+    font-size: 11px;
 }
 
 .header .props, .header .report, .header .css {
     padding: 5px 15px;
-    color: #666;
+    color: #333;
     font-weight: 700;
     overflow: hidden;
     -moz-box-sizing: border-box;
@@ -109,7 +112,6 @@ a {
     color: #08c;
 }
 
-
 h1 {
   font-size: 24px;
   line-height: 1;
@@ -124,11 +126,6 @@ body {
     font: 11px/1.5 Helvetica, sans;
     color: #333;
     background: #fff;
-}
-
-a {
-    text-decoration: none;
-    color: #08c;
 }
 
 p {
@@ -152,6 +149,11 @@ pre {
     white-space: pre-wrap;
     word-wrap: break-word;
     margin-bottom: 20px;
+    -moz-tab-size:    3;
+    -o-tab-size:      3;
+    -webkit-tab-size: 3;
+    -ms-tab-size:     3;
+    tab-size:         3;
 }
 
 .button {
@@ -195,6 +197,8 @@ pre {
     width: 100%;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    padding: 0 0 8px;
+    border-bottom: 3px solid #eee;
 }
 
 .stats h3 {
