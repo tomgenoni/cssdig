@@ -119,7 +119,7 @@ if not style_css:
 css_combined = re.sub(r'\s+', ' ', css_combined )
 
 # add semicolon if needed
-css_combined = re.sub(r'([a-zA-Z0-9])\s*?}', r'\g<1>'+';}', css_combined )
+css_combined = re.sub(r'([a-zA-Z0-9"]\S)}', r'\g<1>'+';}', css_combined )
 # new line after opening bracket
 css_combined = re.sub(r'({)', r' '+'\g<1>'+'\n', css_combined )
 # new line after semicolon
@@ -131,6 +131,7 @@ css_combined = re.sub(r'(.*;)', r'\t '+'\g<1>', css_combined )
 css_combined = re.sub(r'(})', r'\g<1>'+'\n', css_combined )
 # add space after colon if needed
 css_combined = re.sub(r'(\t.*?):(\S)', r'\g<1>'+': '+'\g<2>', css_combined )
+
 
 # Find all instances of !important.
 important_values = re.findall("!important", css_combined)

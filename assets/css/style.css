@@ -67,12 +67,12 @@ html, body {
 
 .props {
     width: 20%;
+    border-right: 1px dashed #ddd;
 }
 
 .report {
     width: 43%;
-    border-left: 1px dashed #eee;
-    border-right: 1px dashed #eee;
+    border-right: 1px dashed #ddd;
 }
 
 .css {
@@ -101,10 +101,15 @@ html, body {
     overflow: hidden;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    border-right: 1px solid #ddd;
+    border-left: 1px solid #f9f9f9;
 }
 
-.header .report {
-    border: none;
+.header .props {
+    border-left: none;
+}
+.header .css {
+    border-right: none;
 }
 
 a {
@@ -194,11 +199,12 @@ pre {
 /* Content */
 
 .stats {
-    width: 100%;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     padding: 0 0 8px;
     border-bottom: 3px solid #eee;
+    margin: 0 -15px;
+    padding: 0 15px;
 }
 
 .stats h3 {
@@ -249,7 +255,7 @@ pre {
     cursor: pointer;
 }
 .report-entry tr.active td  {
-    background: #e4f2f8;
+    background: #e0f6ff;
     cursor: pointer;
 }
 
@@ -314,7 +320,7 @@ pre {
 /* Extras */
 
 .highlight {
-    background: #e4f2f8;
+    background: #e0f6ff;
     color: #000;
     border-radius: 2px;
     padding-right: 3px;
