@@ -55,32 +55,48 @@ html, body {
     min-width: 1100px;
 }
 
-#nav, #report, #css {
+.props, .report, .css {
     height: 100%;
     float: left;
     overflow-y: auto;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 15px;
-    padding-top: 30px;
+    padding: 20px 15px 50px;
 }
 
-#nav {
+.props {
     width: 20%;
     background: #f9f9f9;
 }
 
-#report {
+.report {
     width: 46%;
-    box-shadow: 0 0 2px rgba(0, 0, 0, .1);
-    position: relative;
-    z-index: 1;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
 }
 
-#css {
+.css {
     width: 34%;
     color: #999;
     background: #f9f9f9;
+}
+
+.header {
+    border-bottom: 1px solid #222;
+    overflow: hidden;
+}
+
+.header .props, .header .report, .header .css {
+    padding: 5px 15px;
+    color: #ccc;
+    font-weight: 700;
+    background: #333;
+}
+
+.header .report {
+    border: none;
+    border-left: 1px solid #444;
+    border-right: 1px solid #444;
 }
 
 a {
@@ -95,16 +111,6 @@ h1 {
   font-weight: 300;
   margin: 0 0 10px;
   letter-spacing: -1px;
-}
-
-h2 {
-    position: fixed;
-    top: 0;
-    padding: 2px 15px;
-    background: #ccc;
-    color: #fff;
-    font-weight: 700;
-    z-index: 1;
 }
 
 body {
@@ -178,54 +184,10 @@ pre {
     font-weight: bold;
 }
 
-
-/* Form */
-
-textarea {
-    width: 100%;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    display: block;
-    font: 11px Helvetica, sans;
-    height: 60px;
-    margin-bottom: 15px;
-    border-radius: 3px;
-    padding: 4px;
-}
-
-#url {
-    border: none;
-    width: 100%;
-    background: #fff;
-    border: 1px solid #ddd;
-    padding: 4px;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    border-radius: 3px;
-    margin-bottom: 10px;
-    margin-top: 2px;
-    font-family: Helvetica, sans;
-    font-size: 13px;
-}
-
-
-.highlight {
-    background: #e4f2f8;
-    padding: 0 1px;
-    color: #000;
-    border-radius: 2px;
-}
-
-#prop-checkboxes {
-    margin: 15px 0;
-}
-
 /* Content */
 
 .stats {
     width: 100%;
-    padding: 0 8px;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
@@ -270,7 +232,7 @@ textarea {
 }
 
 .report-entry tr td  {
-    padding: 4px 8px;
+    padding: 4px;
     vertical-align: top;
 }
 
@@ -285,8 +247,6 @@ textarea {
 
 .report-entry tr:first-child td  {
     font-weight: 700;
-    font-size: 13px;
-    padding-top: 0;
     border-top: none;
 }
 
@@ -342,3 +302,15 @@ textarea {
     font-size: 20px;
     margin-bottom: 30px;
 }
+
+/* Extras */
+
+.highlight {
+    background: #e4f2f8;
+    color: #000;
+    border-radius: 2px;
+    padding-right: 3px;
+    margin-right: -4px;
+    border: 1px solid #eee;
+}
+

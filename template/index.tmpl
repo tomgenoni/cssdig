@@ -13,16 +13,18 @@
 </head>
 <body>
     <div id="wrap">
-        <div id="nav">
-            <h1>CSS Dig</h1>
+        <div class="header">
+            <div class="props">CSS Properites Found</div>
+            <div class="report">Report Data</div>
+            <div class="css">Combined CSS</div>
+        </div>
+        <div class="props" id="props">
             <ul id="prop-checkboxes">{{ checkbox_html }}</ul>
         </div>
-        <div id="report">
-            <h2>Dig Report</h2>
+        <div class="report" id="report">
             {{ report_html }}
         </div>
-        <div id="css">
-            <h2>Combined CSS</h2>
+        <div class="css" id="css">
             <pre>{{ css_combined }}</pre>
         </div>
     </div>

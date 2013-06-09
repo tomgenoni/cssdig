@@ -138,6 +138,12 @@ report_html = "<table class='report-entry'>\n"
 report_html += "<tr class='totals'>\n<td>!important</td>" + "<td>" + str(len(important_values)) + "</td>\n</tr>\n"
 report_html += "</table>\n"
 
+# # Find all instances of TODO.
+# todo_values = re.findall("TODO", css_combined)
+# report_html += "<table class='report-entry'>\n"
+# report_html += "<tr class='totals'>\n<td>TODO</td>" + "<td>" + str(len(todo_values)) + "</td>\n</tr>\n"
+# report_html += "</table>\n"
+
 # Find all properties in the combined CSS.
 prop_regex = "[{|;]\s*([a-zA-Z0-9-]*)\s*:"
 properties = re.findall(prop_regex, css_combined)

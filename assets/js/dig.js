@@ -1,22 +1,13 @@
 $(document).ready(function(){
 
+    // Show/hide properties from the data list.
     $('input[type=checkbox]').click(function(){
         var trigger = $(this).attr("id");
         var target = trigger.replace("checkbox-","table-");
         $("#"+target).toggle();
     });
 
-    $('#prop-checkboxes .show-prop').click(function(){
-        var target = $(this).attr("data-target");
-        trigger_top = $(this).offset().top;
-        target_top = $("#"+target).offset().top;
-        report_top = $("#report").scrollTop();
-        $('#report').animate({
-             scrollTop: target_top + report_top - trigger_top + 4
-        }, 500);
-        return false;
-    });
-
+    // Click into report data to reveal locations in Combined CSS.
     $('.report-entry tr').click(function(){
         if ( $(this).hasClass("active") ) {
             $("#css pre").unhighlight();
@@ -30,7 +21,7 @@ $(document).ready(function(){
                 target = target + ":";
             }
             $("#css pre").unhighlight();
-            $("#css pre").highlight(target);
+            $("#css pre").highlight(" " + target, { caseSensitive: true });
             $(".ruleset").hide();
             setTimeout(function(){
                 $(".highlight").each(function(){
@@ -41,13 +32,7 @@ $(document).ready(function(){
         return false;
     });
 
-    $("#button-reset-css").click(function(){
-        $("#css pre").unhighlight();
-        $(".ruleset").show();
-        $(this).hide();
-        return false;
-    });
-
+    // Wraps each rule in a space so it can be hidden/shown during highlights.
     var css_pure = $("#css pre").html()
     css_pure = css_pure.replace(/\}/g,"}</span><span class='ruleset'>")
     css_pure = css_pure.substring(0, css_pure.length - 7);
