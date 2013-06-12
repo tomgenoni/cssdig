@@ -47,11 +47,17 @@ url_parsed = urlparse(url)
 ts = time.time()
 timestamp = datetime.datetime.fromtimestamp(ts).strftime('%B %d, %Y at %H:%M:%S')
 
+def file_len(fname):
+    with open(fname) as f:
+        for i, l in enumerate(f):
+            pass
+    return i + 1
+
 def formatCSS(css):
     # spaces may be safely collapsed as generated content will collapse them anyway
     css = re.sub(r'\s+', ' ', css )
     # add semicolon if needed
-    css = re.sub(r'([a-zA-Z0-9"]\s*)}', r'\g<1>'+';}', css )
+    css = re.sub(r'([a-zA-Z0-9"%\']\s*)}', r'\g<1>'+';}', css )
     # new line after opening bracket
     css = re.sub(r'({)', r' '+'\g<1>'+'\n', css )
     # new line after semicolon
@@ -141,6 +147,10 @@ if not style_css:
 # Clean up CSS as needed.
 css_combined = formatCSS(css_combined)
 
+# Get number of lines in combined CSS.
+css_lines = re.findall("\n", css_combined)
+css_lines = str(len(css_lines))
+
 print "Building report..."
 
 # Find all instances of !important.
@@ -161,6 +171,9 @@ properties.sort()
 
 # Placholder for property checkbox HTML.
 checkbox_html_list = []
+
+# Number of properties found.
+prop_length =  str(len(properties))
 
 # Run through all the properties.
 for p in properties:
@@ -238,6 +251,8 @@ os.makedirs(build_dir)
 # Open layout template and replace variables.
 layout_tmpl_html = open(layout_tmpl).read()
 final_html_output = layout_tmpl_html\
+    .replace("{{ css_lines }}", css_lines)\
+    .replace("{{ prop_length }}", prop_length)\
     .replace("{{ checkbox_html }}", checkbox_html)\
     .replace("{{ css_combined }}", css_combined)\
     .replace("{{ report_html }}", header_html + report_html);
