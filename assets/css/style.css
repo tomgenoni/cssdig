@@ -78,6 +78,7 @@ html, body {
 .css {
     width: 37%;
     color: #999;
+    background: #f9f9f9;
 }
 
 .header {
@@ -86,8 +87,7 @@ html, body {
     box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
     z-index: 1;
     min-width: 1100px;
-    border-bottom: 1px solid #eee;
-    background: #eee;
+    border-bottom: 1px solid #111;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     font-family: Helvetica, sans;
@@ -95,14 +95,15 @@ html, body {
 }
 
 .header .props, .header .report, .header .css {
+    background: #222;
     padding: 5px 15px;
-    color: #333;
+    color: #aaa;
     font-weight: 700;
     overflow: hidden;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    border-right: 1px solid #ddd;
-    border-left: 1px solid #f9f9f9;
+    border-right: 1px solid #111;
+    border-left: 1px solid #333;
 }
 
 .header .props {
@@ -161,50 +162,14 @@ pre {
     tab-size:         3;
 }
 
-.button {
-    cursor: pointer;
-    display: inline-block;
-    font-family: Helvetica, sans;
-    color: #08c;
-    background: none;
-    padding: 1px 2px;
-    font-size: 11px;
-    line-height: 1;
-    white-space: nowrap;
-    margin: 0;
-    font-weight: 700;
-    border: none;
-}
 
-.button:hover,
-.button:active {
-    color: #333;
-}
-
-.button:active {
-    color: #111;
-}
-
-.error {
-    background: #eab7b7;
-    padding: 10px 20px;
-    color: #a12020;
-    border-radius: 3px;
-}
-.error:before {
-    content:"Error: ";
-    font-weight: bold;
-}
-
-/* Content */
+/* Stats */
 
 .stats {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     padding: 0 0 8px;
     border-bottom: 3px solid #eee;
-    margin: 0 -15px;
-    padding: 0 15px;
 }
 
 .stats h3 {
@@ -237,6 +202,7 @@ pre {
   color: #a12020;
 }
 
+/* Reports */
 
 .report-entry {
     width: 100%;
@@ -296,25 +262,6 @@ pre {
     width: 14px;
     height: 14px;
     box-shadow: 0 0 3px rgba(0, 0, 0, .2)
-}
-
-
-.about {
-    max-width: 600px;
-    min-width: 400px;
-    font-size: 13px;
-    padding: 40px;
-    font-family: Georgia, Times, serif;
-}
-
-.about ul {
-    list-style: disc;
-    padding-left: 18px;
-}
-
-.about p:first-child {
-    font-size: 20px;
-    margin-bottom: 30px;
 }
 
 /* Extras */
