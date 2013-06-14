@@ -86,7 +86,6 @@ print "Attempting to reach URL..."
 # Create soup object to search through.
 soup = BeautifulSoup(getRemoteURL(url))
 
-
 # Placeholders for css files.
 css_urls_all = []
 css_urls_clean = []
