@@ -55,7 +55,7 @@ Clone or download this repository to your computer. Open a terminal window and n
 
     python cssdig.py http://atomeye.com
 
-...supplying your own URL in place of http://atomeye.com.
+...replacing http://atomeye.com with any URL you'd like to run a report on.
 
 If it runs successfully you should see the following:
 
