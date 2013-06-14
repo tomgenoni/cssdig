@@ -14,9 +14,9 @@ $(document).ready(function(){
             $(this).removeClass("active");
             $(".ruleset").show();
         } else {
-            $('.report-entry tr').removeClass("active")
+            $('.report-entry tr').removeClass("active");
             $(this).addClass("active");
-            var target = $(this).find("td").eq(0).text() || (this).find("color-example-wrap").text()
+            var target = $(this).find("td").eq(0).text() || (this).find("color-example-wrap").text();
             if ( target.charAt(target.length-1) != ";" && target != "!important") {
                 target = target + ":";
             }
@@ -29,7 +29,7 @@ $(document).ready(function(){
             $(".ruleset").hide();
             setTimeout(function(){
                 $(".highlight").each(function(){
-                    $(this).closest(".ruleset").show()
+                    $(this).closest(".ruleset").show();
                 })
             },1)
         }
@@ -37,9 +37,9 @@ $(document).ready(function(){
     });
 
     // Wraps each rule in a space so it can be hidden/shown during highlights.
-    var css_pure = $("#css pre").html()
-    css_pure = css_pure.replace(/\}/g,"}</span><span class='ruleset'>")
+    var css_pure = $("#css pre").html();
+    css_pure = css_pure.replace(/\}/g,"}</span><span class='ruleset'>");
     css_pure = css_pure.substring(0, css_pure.length - 7);
-    $("#css pre").html("<span class='ruleset'>" + css_pure)
+    $("#css pre").html("<span class='ruleset'>" + css_pure);
 
 })
