@@ -1,6 +1,6 @@
 # CSS Dig
 
-Inspired by Nicolle Sullivan’s advice to “grep your styles”, CSS Dig is Python script you run locally that unearths properties and values from almost any website — from both linked CSS files as well as any styles found in the head — to help you analyze, refactor, standardize and maintain your CSS.
+Inspired by Nicolle Sullivan’s advice to “grep your styles”, CSS Dig is is a Python script that runs locally to  unearth properties and values from almost any website — from both linked CSS files as well as any styles found in the head — to help you analyze, refactor, standardize and maintain your CSS.
 
 See [CSS Dig: It’s Time to Refactor](http://atomeye.com/css-dig.html) for more context.
 
