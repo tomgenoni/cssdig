@@ -134,9 +134,9 @@ for u in css_urls_all:
                 css_combined += f.read()
             else:
                 css_combined += doc.read()
-            css_urls_clean.append(u)
+            css_urls_clean.append(u.encode('utf8'))
         except urllib2.HTTPError, e:
-            css_urls_bad.append(u)
+            css_urls_bad.append(u.encode('utf8'))
 
 # Check for styles in head.
 style_css = ''.join([s.get_text() for s in soup.find_all('style')])
