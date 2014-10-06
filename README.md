@@ -2,16 +2,16 @@
 
 Inspired by Nicolle Sullivan’s advice to “grep your styles”, CSS Dig is is a Python script that runs locally to  unearth properties and values from almost any website — from both linked CSS files as well as any styles found in the head — to help you analyze, refactor, standardize and maintain your CSS.
 
-See [CSS Dig: It’s Time to Refactor](http://atomeye.com/css-dig.html) for more context.
+See [CSS Dig: It’s Time to Refactor](http://www.atomeye.com/css-dig.html) for more context.
 
 Some sample reports:
 
 <ul>
-  <li><a href="http://atomeye.com/dig-reports/nytimes.html">Report for http://nytimes.com</a></li>
-  <li><a href="http://atomeye.com/dig-reports/nytimes-world.html">Report for http://nytimes.com/pages/world/index.html</a></li>
-  <li><a href="http://atomeye.com/dig-reports/msn.html">Report for http://msn.com</a></li>
-  <li><a href="http://atomeye.com/dig-reports/aol.html">Report for http://aol.com</a></li>
-  <li><a href="http://atomeye.com/dig-reports/apple.html">Report for http://apple.com</a></li>
+  <li><a href="http://www.atomeye.com/dig-reports/nytimes.html">Report for http://nytimes.com</a></li>
+  <li><a href="http://www.atomeye.com/dig-reports/nytimes-world.html">Report for http://nytimes.com/pages/world/index.html</a></li>
+  <li><a href="http://www.atomeye.com/dig-reports/msn.html">Report for http://msn.com</a></li>
+  <li><a href="http://www.atomeye.com/dig-reports/aol.html">Report for http://aol.com</a></li>
+  <li><a href="http://www.atomeye.com/dig-reports/apple.html">Report for http://apple.com</a></li>
 </ul>
 
 
