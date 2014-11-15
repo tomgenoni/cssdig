@@ -1,6 +1,6 @@
 # CSS Dig
 
-Note: This is now a [CSS Dig Chrome Extension](https://chrome.google.com/webstore/detail/css-dig/lpnhmlhomomelfkcjnkcacofhmggjmco) that duplicates most of this functionality and is much easier to use.
+**Note: There is now a [CSS Dig Chrome Extension](https://chrome.google.com/webstore/detail/css-dig/lpnhmlhomomelfkcjnkcacofhmggjmco) that duplicates most of this functionality and is much easier to use.**
 
 Inspired by Nicolle Sullivan’s advice to “grep your styles”, CSS Dig is is a Python script that runs locally to  unearth properties and values from almost any website — from both linked CSS files as well as any styles found in the head — to help you analyze, refactor, standardize and maintain your CSS.
 
